@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801173336) do
+ActiveRecord::Schema.define(version: 20150801212857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,41 @@ ActiveRecord::Schema.define(version: 20150801173336) do
   end
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
+
+  create_table "image_collections", force: :cascade do |t|
+    t.string   "images",     default: [],              array: true
+    t.integer  "user_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "image_collections", ["user_id"], name: "index_image_collections_on_user_id", using: :btree
+
+  create_table "images", force: :cascade do |t|
+    t.text     "url"
+    t.string   "tags",       default: [],              array: true
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string   "images",              default: [],              array: true
+    t.integer  "image_collection_id"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "name"
+    t.float    "rating"
+    t.string   "cuisines",            default: [],              array: true
+    t.integer  "cost"
+    t.string   "address"
+    t.string   "editorReview"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "restaurants", ["image_collection_id"], name: "index_restaurants_on_image_collection_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -56,4 +91,6 @@ ActiveRecord::Schema.define(version: 20150801173336) do
   add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
   add_foreign_key "identities", "users"
+  add_foreign_key "image_collections", "users"
+  add_foreign_key "restaurants", "image_collections"
 end

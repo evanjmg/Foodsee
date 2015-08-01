@@ -6,9 +6,9 @@ class CreateRestaurants < ActiveRecord::Migration
       t.float :latitude
       t.float :longitude
       t.string :name
-      t.double :rating
+      t.float :rating
       t.string :cuisines, array: true, default: []
-      t.int :cost
+      t.integer :cost
       t.string :address
       t.string :editorReview
 
