@@ -1,0 +1,65 @@
+
+USER
+has_many :collections
+has_many :images through: :collections
+lat: 
+long:
+
+*******
+add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
+
+create_table "users", force: :cascade do |t|
+  t.string   "email",                  default: "", null: false
+  t.string   "encrypted_password",     default: "", null: false
+  t.string   "reset_password_token"
+  t.datetime "reset_password_sent_at"
+  t.datetime "remember_created_at"
+  t.integer  "sign_in_count",          default: 0,  null: false
+  t.datetime "current_sign_in_at"
+  t.datetime "last_sign_in_at"
+  t.inet     "current_sign_in_ip"
+  t.inet     "last_sign_in_ip"
+  t.datetime "created_at",                          null: false
+  t.datetime "updated_at",                          null: false
+  t.string   "provider"
+  t.string   "uid"
+  t.string   "name"
+  t.string   "username"
+  t.string   "confirmation_token"
+  t.datetime "confirmed_at"
+  t.datetime "confirmation_sent_at"
+  t.string   "unconfirmed_email"
+
+IMAGE
+belongs_to :collection
+belongs_to user through: collection
+url: 
+tags: array 
+collection_id
+lat:
+long:
+
+IMAGE COLLECTION 
+images: array of image
+belongs_to :user
+user_id
+belongs_to :restaurant
+
+RESTAURANT (all from zomato api)
+has one: collection of images
+lat: float (→ address   The complete address for the restaurant string
+    → locality  Locality in which the restaurant is located string
+    → city  Name of the city in which the restaurant is located string
+    → latitude  Latitude of the restaurant if available double
+    → longitude Longitude of the restaurant if available    double)
+long:float - https://api.zomato.com/v1/search.xml/near, https://api.zomato.com/v1/search.json/near?lat=28.557706&lon=77.205879, https://www.zomato.com/api/sandbox?param=lat%3D28.557706%26lon%3D77.205879&url=https%3A%2F%2Fapi.zomato.com%2Fv1%2Fsearch.json%2Fnear&apikey=
+name: 
+rating:
+cost: (avgCostForTwo    Average cost for two at the restaurant)
+address:
+collection_id 
+belongs to collection
+
+Restaurant Collection 
+has many restaurants
+

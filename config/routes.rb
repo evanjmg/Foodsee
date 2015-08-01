@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
-  get 'search/new'
+ resources :search, only: [:index, :new]
 
-  get 'search/index'
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
-  devise_for :users, :controllers => {  :omniauth_callbacks => "users/omniauth_callbacks"}
-  # get 'users/index', to: "users#index", as: 'users' 
+  devise_for :users, :skip => [:sessions], :controllers => {  :omniauth_callbacks => "users/omniauth_callbacks"}
+  
   devise_scope :user do
- 
+    get 'login' => 'devise/sessions#new', :as => :new_user_session
+    post 'login' => 'devise/sessions#create', :as => :user_session
+    match 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session,
+      :via => Devise.mappings[:user].sign_out_via
     authenticated :user do
       root 'search#index', as: :authenticated_root
     end
@@ -17,4 +19,5 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:index, :show]
   
+ 
 end
