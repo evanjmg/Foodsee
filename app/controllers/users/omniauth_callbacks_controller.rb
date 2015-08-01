@@ -5,20 +5,48 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # You should also create an action method in this controller like this:
   # def twitter
   # end
-  def instagram
- 
-    @user = User.from_omniauth(request.env["omniauth.auth"])
+ # def instagram
+ #   @user = User.find_for_oauth(env["omniauth.auth"], current_user)
 
-    if @user.persisted?
-     
-      sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
-      set_flash_message(:notice, :success, :kind => "Instagram") if is_navigational_format?
-    else
-      session["devise.instagram_data"] = request.env["omniauth.auth"]
-      redirect_to new_user_registration_url
-    end
-  end
+ #   if @user.persisted?
+ #     # Sign in a user and tries to redirect first to the stored location 
+ #     # Then to the url specified by after_sign_in_path_for.
+ #     sign_in_and_redirect @user, event: :authentication
 
+ #     # Set a flash message
+ #     set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
+ #   else
+ #     session["devise.#{provider}_data"] = env["omniauth.auth"]
+ #     redirect_to new_user_registration_url
+ #   end
+ # end
+ def self.provides_callback_for(provider)
+     class_eval %Q{
+       def #{provider}
+         @user = User.find_for_oauth(env["omniauth.auth"], current_user)
+
+         if @user.persisted?
+           sign_in_and_redirect @user, event: :authentication
+           set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
+         else
+           session["devise.#{provider}_data"] = env["omniauth.auth"]
+           redirect_to new_user_registration_url
+         end
+       end
+     }
+   end
+
+   [:instagram].each do |provider|
+     provides_callback_for provider
+   end
+
+   def after_sign_in_path_for(resource)
+     if resource.email_verified?
+       super resource
+     else
+       finish_signup_path(resource)
+     end
+   end
   # More info at:
   # https://github.com/plataformatec/devise#omniauth
 
@@ -39,3 +67,17 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   #   super(scope)
   # end
 end
+
+# def instagram
+
+#   @user = User.from_omniauth(request.env["omniauth.auth"])
+
+#   if @user.persisted?
+   
+#     sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
+#     set_flash_message(:notice, :success, :kind => "Instagram") if is_navigational_format?
+#   else
+#     session["devise.instagram_data"] = request.env["omniauth.auth"]
+#     redirect_to new_user_registration_url
+#   end
+# end
