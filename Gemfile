@@ -14,14 +14,17 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 gem 'jbuilder', '~> 2.0'
-gem 'foundation-rails'
+gem 'foundation-rails', '~> 5.5.2.1'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'geocoder'
-gem 'instagram'
-gem 'devise'
+gem 'geocoder', '~> 1.2.9'
+gem 'fog', '~> 1.32.0'
+gem 'carrierwave', '~> 0.10.0'
+gem 'instagram', '~> 1.1.5'
+gem 'devise', '~> 3.5.1'
 gem 'omniauth-instagram', '~> 1.0.1'
-
-
+gem 'acts-as-taggable-on', '~> 3.5.0'
+gem 'imagga', '~> 0.0.5'
+gem 'foursquare2'
 group :development, :test do
 
   gem 'byebug'

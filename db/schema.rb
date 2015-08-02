@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150802104504) do
+ActiveRecord::Schema.define(version: 20150802121126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,12 +38,15 @@ ActiveRecord::Schema.define(version: 20150802104504) do
 
   create_table "images", force: :cascade do |t|
     t.text     "url"
-    t.string   "tags",       default: [],              array: true
+    t.string   "tags",                default: [],              array: true
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "image_collection_id"
   end
+
+  add_index "images", ["image_collection_id"], name: "index_images_on_image_collection_id", using: :btree
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "images",              default: [],              array: true
@@ -93,5 +96,6 @@ ActiveRecord::Schema.define(version: 20150802104504) do
 
   add_foreign_key "identities", "users"
   add_foreign_key "image_collections", "users"
+  add_foreign_key "images", "image_collections"
   add_foreign_key "restaurants", "image_collections"
 end

@@ -1,4 +1,5 @@
 <h1>Select up to 10 Food Images You Like.</h1>
-<% for media_item in instagram_client.tag_recent_media(@tags[0].name) %>
-  <img src='<%= media_item.images.thumbnail.url %>'>
+
+<% @image_urls.each do |image_url| %>
+  <img src='<%= image_url %>'>
 <% end %>
