@@ -175,10 +175,6 @@ GEM
     foundation-rails (5.5.2.1)
       railties (>= 3.1.0)
       sass (>= 3.3.0, < 3.5)
-    foursquare2 (2.0.2)
-      faraday (~> 0.8)
-      faraday_middleware (>= 0.8)
-      hashie (>= 1.0, < 4.0.0)
     geocoder (1.2.9)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
@@ -231,6 +227,8 @@ GEM
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
+    omniauth-facebook (2.0.1)
+      omniauth-oauth2 (~> 1.2)
     omniauth-instagram (1.0.1)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
@@ -317,12 +315,13 @@ DEPENDENCIES
   devise (~> 3.5.1)
   fog (~> 1.32.0)
   foundation-rails (~> 5.5.2.1)
-  foursquare2
   geocoder (~> 1.2.9)
+  httparty (~> 0.13.5)
   imagga (~> 0.0.5)
   instagram (~> 1.1.5)
   jbuilder (~> 2.0)
   jquery-rails
+  omniauth-facebook
   omniauth-instagram (~> 1.0.1)
   pg
   rails (= 4.2.3)

@@ -16,7 +16,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
      }
    end
 
-   [:instagram].each do |provider|
+   [:instagram, :facebook].each do |provider|
      provides_callback_for provider
    end
 

@@ -2,10 +2,8 @@ class ImageCollectionsController < ApplicationController
   def new
     
     # @tags = instagram_client.tag_search((params[:query]))
-    client = Foursquare2::Client.new(:client_id => ENV['FOURSQUARE_API_KEY'], :client_secret =>  ENV['FOURSQUARE_API_SECRET']))
-
-   
-    venues = foursquare.venues.search(:ll => "51.521036, -0.070496")
+    response = HTTParty.get
+   #{ENV['FACEBOOK_API_KEY']}&client_secret=#{ENV['FACEBOOK_API_SECRET']}
 raise
 # , :categoryId => '4d4b7105d754a06374d81259',:query => params[:search_query]
     # locations = instagram_client.location_search("37.7808851", "-122.3948632")
