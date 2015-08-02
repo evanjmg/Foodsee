@@ -1,0 +1,33 @@
+To begin Provide your location and search
+<h2>Search Food Photos</h2>
+<div class="row">
+    <div class="large-12 columns">
+      <div class="row collapse">
+        <div class="small-10 columns">
+        <%= form_tag(new_image_collection_path, :method => "get") do %>
+        <%= search_field_tag :query, params[:query], placeholder: "Search Photos" %>
+       
+    
+        </div>
+        <div class="small-2 columns">
+          <%= submit_tag "Search", class: "button postfix" %>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="row">
+  <div class="small-10 columns">
+    <div class="range-slider round" data-slider data-options="display_selector: #days-off-count; initial: 10;start: 1; end: 100;">
+      <span class="range-slider-handle" role="slider" tabindex="0"></span>
+      <span class="range-slider-active-segment"></span>
+    </div>
+  </div>
+  <div class="small-2 columns">
+  <%= number_field_tag :price,"10", id: "days-off-count", min:1, max:100  %>
+  <% end %>
+
+  </div>
+</div>

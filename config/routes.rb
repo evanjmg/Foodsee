@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
- resources :search, only: [:index, :new]
+ resources :image_collections, only: [:index, :new, :create, :destroy] 
+ 
+ resources :search, only: [:index, :new, :image_results]
 
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   devise_for :users, :skip => [:sessions], :controllers => {  :omniauth_callbacks => "users/omniauth_callbacks"}

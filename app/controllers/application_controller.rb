@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  helper_method :instagram_client
+  def instagram_client
+    Instagram.client(:access_token => current_user.identities.find_by(provider: 'instagram').access_token)
+  end
+
   def ensure_signup_complete
       # Ensure we don't go into an infinite loop
       return if action_name == 'finish_signup'
