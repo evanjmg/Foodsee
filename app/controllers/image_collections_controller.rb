@@ -1,22 +1,25 @@
 class ImageCollectionsController < ApplicationController
   def new
-    
-    # @tags = instagram_client.tag_search((params[:query]))
-    response = HTTParty.get
-   #{ENV['FACEBOOK_API_KEY']}&client_secret=#{ENV['FACEBOOK_API_SECRET']}
-raise
-# , :categoryId => '4d4b7105d754a06374d81259',:query => params[:search_query]
-    # locations = instagram_client.location_search("37.7808851", "-122.3948632")
-    # @image_urls = []
-    # locations.each do |location|
-    # for media_item in instagram_client.location_recent_media(location.id)
+    response = facebook_restaurant_search(params[:search_query], params[:lat], params[:lon], 3000)
+    data = response['data']
+    lat_array = []
+    long_array = []
+    data.each_with_index do |restaurant, index| 
+      lat_array << restaurant['location']['latitude']
+      long_array << restaurant['location']['longitude']
+     end
+     @image_urls = []
+      
+      a = instagram_client.location_search(lat_array[0], long_array[0])
 
-    #    @image_urls << media_item.images.thumbnail.url
-    #  end
-   end
-    # @search_collection = current_user.image_collections.create() 
-    # instagram_client.tag_recent_media(@tags[0].name).each do |media_item| 
-    #  @search_collection >> Image.create()
+
+    for media_item in instagram_client.location_recent_media(a[0].id)
+       @image_urls << media_item.images.thumbnail.url
+     end
+    # id_array.each do |id|
+    # locations << instagram_client.location_search(id)
+    #   end
+  end
 
   def index
   end
@@ -27,3 +30,12 @@ raise
   def destroy
   end
 end
+# 
+# @image_urls = []
+# locations.each do |location|
+# for media_item in instagram_client.location_recent_media(location.id)
+
+#    @image_urls << media_item.images.thumbnail.url
+#  end    # @search_collection = current_user.image_collections.create() 
+    # instagram_client.tag_recent_media(@tags[0].name).each do |media_item| 
+    #  @search_collection >> Image.create()

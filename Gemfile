@@ -25,9 +25,9 @@ gem 'omniauth-instagram', '~> 1.0.1'
 gem 'acts-as-taggable-on', '~> 3.5.0'
 gem 'imagga', '~> 0.0.5'
 gem 'httparty', '~> 0.13.5'
-gem 'omniauth-facebook'
-group :development, :test do
 
+group :development, :test do
+  gem 'pry-rails'
   gem 'byebug'
 
   gem 'web-console', '~> 2.0'

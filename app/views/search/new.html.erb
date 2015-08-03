@@ -4,9 +4,11 @@ To begin Provide your location and search
     <div class="large-12 columns">
       <div class="row collapse">
         <div class="small-10 columns">
+      
         <%= form_tag(new_image_collection_path, :method => "get") do %>
         <%= search_field_tag :search_query, params[:search_query], placeholder: "Search Photos" %>
-       
+        <%= hidden_field_tag 'lat', value = '', id: "lat"%>
+        <%= hidden_field_tag 'lon', value = '', id: "lon"%>
     
         </div>
         <div class="small-2 columns">
@@ -31,3 +33,24 @@ To begin Provide your location and search
 
   </div>
 </div>
+  <script>
+  if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(GeoL);
+  if (document.getElementById('lat') === null) {
+     OtherThanGeo(); 
+  }
+}
+  else {
+      OtherThanGeo();
+  }
+  function OtherThanGeo () {
+       $('input#search_query').html("Geolocation is not supported by this browser. Please Provide your address.");
+       form = document.createElement("input");
+       form.attr({ name: "address", id: "address", title: "Address", placeholder: "Type Address"});
+       document.getElementsByTagName('form')[0].appendChild(form)
+      }
+  function GeoL(position) {
+    document.getElementById('lat').value = position.coords.latitude;
+    document.getElementById('lon').value = position.coords.longitude;
+  }
+  </script>

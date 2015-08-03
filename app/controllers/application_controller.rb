@@ -3,6 +3,14 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :instagram_client
+  helper_method :facebook_restaurant_search
+ 
+  def facebook_restaurant_search(search_query,lat,long,distance)
+   puts url = URI.escape("https://graph.facebook.com/v2.4/search?q=#{search_query}&type=place&center=#{lat},#{long}&distance=#{distance}&access_token=#{ENV['FACEBOOK_API_KEY']}|#{ENV['FACEBOOK_API_SECRET']}")
+      HTTParty.get(url)
+  end
+  
+
   def instagram_client
     Instagram.client(:access_token => current_user.identities.find_by(provider: 'instagram').access_token)
   end
