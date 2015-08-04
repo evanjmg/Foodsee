@@ -14,7 +14,7 @@
     <ul class="right">
       <li class="has-dropdown">
       <% if user_signed_in? %>
-      <%=  %>
+      <%= link_to("My Account", my_account_path) %>
 <% else %>
 <%= link_to "Login in", new_user_session_path %>
 <% end %></a>

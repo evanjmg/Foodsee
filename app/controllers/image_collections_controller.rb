@@ -4,7 +4,7 @@ class ImageCollectionsController < ApplicationController
     data = response['data']
     lat_array = []
     long_array = []
-    data.each_with_index do |restaurant, index| 
+    data.each do |restaurant| 
       lat_array << restaurant['location']['latitude']
       long_array << restaurant['location']['longitude']
       long_array << restaurant['location']['longitude']

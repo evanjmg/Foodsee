@@ -16,4 +16,10 @@
 //= require turbolinks
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function(){ $(document).foundation();
+
+$('input#search-button').on('click', function () {
+  $('div.new-search-content').addClass('animated fadeIn whirly-loader');
+  $('div.load-message').fadeIn("slow");
+});
+  });

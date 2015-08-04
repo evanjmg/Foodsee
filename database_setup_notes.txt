@@ -1,7 +1,7 @@
 
 USER
-has_many :collections
-has_many :images through: :collections
+
+has_and_belongs_to_many :images
 lat: 
 long:
 
@@ -31,23 +31,18 @@ create_table "users", force: :cascade do |t|
   t.string   "unconfirmed_email"
 
 IMAGE
-belongs_to :collection
-belongs_to user through: collection
-belongs_to restaurant through: collection
+has_and_belongs_to_many :users
+belongs_to :restaurant
 url: 
 <!-- tags: array  -->
 collection_id:
 lat:
 long:
+restaurant_id
 
-IMAGE COLLECTION 
-<!-- images: array of image -->
-belongs_to :user
-user_id
-belongs_to :restaurant
 
 RESTAURANT 
-has one: collection of images
+has_many :images
 
 lat: float (→   The complete address for the restaurant string
     → locality  Locality in which the restaurant is located string
@@ -63,13 +58,7 @@ rating: float (GOOGLE)
 
  Average cost for two at the restaurant)
 address:
-collection_id 
-belongs to collection
 
-Restaurant Collection 
-has many restaurants
-has many image collections through :restaurants
-name 
 
 
 

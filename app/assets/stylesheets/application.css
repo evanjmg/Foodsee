@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require 'whirly'
  *= require foundation_and_overrides
-
+ *= require 'animate'
  */

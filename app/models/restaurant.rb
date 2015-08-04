@@ -1,3 +1,7 @@
 class Restaurant < ActiveRecord::Base
-  belongs_to :image_collection
+ has_many :images
+ validate :latitude, presence: true
+ validate :lontitude, presence: true
+ validate :name, presence: true
+ 
 end
