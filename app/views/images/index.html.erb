@@ -1,0 +1,9 @@
+<% @images.each do |image| %>
+  <ul>
+    <li><%= image.name %></li>
+    <li><%= image_tag image.graffiti_image.url %></li>
+    <li><%= link_to 'Show', image %></li>
+    <li><%= link_to 'Edit', edit_image_path(image) %></li>
+    <li><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  </ul>
+<% end %>

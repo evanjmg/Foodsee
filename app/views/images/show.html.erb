@@ -1,0 +1,7 @@
+<p>
+  <b>Image:</b>
+  <%= link_to image_tag(@image.image_file.thumb.url), @image.image_file.url %>
+</p>
+<% @image.tags.any? %>
+  <% @image.tags.each do |tag| %>
+<% end %>

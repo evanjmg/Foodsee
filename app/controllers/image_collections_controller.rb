@@ -4,7 +4,6 @@ class ImageCollectionsController < ApplicationController
     data = response['data']
     lat_array = []
     long_array = []
-    name = data[0]['name']
     data.each_with_index do |restaurant, index| 
       lat_array << restaurant['location']['latitude']
       long_array << restaurant['location']['longitude']
@@ -14,35 +13,51 @@ class ImageCollectionsController < ApplicationController
 
       a = instagram_client.location_search(lat_array[0], long_array[0])
 
-
+    b = instagram_client.location_search(lat_array[1], long_array[1])
     for media_item in instagram_client.location_recent_media(a[0].id)
        @image_urls << media_item.images.thumbnail.url
      end
+     for media_item in instagram_client.location_recent_media(b[0].id)
+        @image_urls << media_item.images.thumbnail.url
+      end
+     @image_urls << "http://cdn.bulbagarden.net/upload/thumb/3/39/007Squirtle.png/250px-007Squirtle.png"
   
      baseurl = "https://maps.googleapis.com/maps/api/place/textsearch/json?"
-     lat = lat_array[0].to_s
-     lng = long_array[0].to_s
-     radius = 1.to_s
+     lat = params[:lat] #lat_array[0].to_s
+     lng =  params[:lon] #long_array[0].to_s
+     radius = 2000.to_s
      type = "food"
      sensor = "true"
-     keyword = URI.encode(name.tr(' ', '').tr('&','+'))
+     keyword = URI.encode((params[:search_query]).tr(' ', '').tr('&','+'))
 
-     combine = baseurl + 'query=' + keyword + '&radius=1&'+ 'location=' + lat + ',' + lng + "&key=#{ENV['GOOGLE_API_KEY']}"
+     combine = baseurl + 'query=' + keyword + '&radius=2000&'+ 'location=' + lat + ',' + lng + "&key=#{ENV['GOOGLE_API_KEY']}"
     yo = HTTParty.get(combine)
-   raise
+    # yo.each_with_index do |restaurant, index| 
+    #   lat_array << restaurant['location']['latitude']
+    #   long_array << restaurant['location']['longitude']
+    #   long_array << restaurant['location']['longitude']
+    
    # "https://maps.googleapis.com/maps/api/place/textsearch/json?location=51.5182381,-0.071489&types=food&&query=Cake&key=AIzaSyBDi2YRxYVR2u1QNUdRPhk0-5G3jt3EdFQ"
    # https://maps.googleapis.com/maps/api/place/textsearch/output?parameters
    # https://maps.googleapis.com/maps/api/place/textsearch/json?location=51.5182381,-0.071489&types=food&&query=Cake&rankby=distance&key=AIzaSyBDi2YRxYVR2u1QNUdRPhk0-5G3jt3EdFQ
    # raise
 
-   #    lat = result['results'][0]['geometry']['location']['lat']
-   #    lng = result['results'][0]['geometry']['location']['lng']
-   #     @image_urls = []
-   #    a = instagram_client.location_search(lat, lng)
-   #   for media_item in instagram_client.location_recent_media(a[0].id)
-   #           @image_urls << media_item.images.thumbnail.url
-   #         end
-     
+      lat = yo['results'][0]['geometry']['location']['lat']
+      lng = yo['results'][0]['geometry']['location']['lng']
+
+      b = instagram_client.location_search(lat, lng)
+
+
+      lat = yo['results'][1]['geometry']['location']['lat']
+      lng = yo['results'][1]['geometry']['location']['lng']
+
+      c = instagram_client.location_search(lat, lng)
+     for media_item in instagram_client.location_recent_media(b[0].id)
+             @image_urls << media_item.images.thumbnail.url
+           end
+     for media_item in instagram_client.location_recent_media(c[0].id)
+             @image_urls << media_item.images.thumbnail.url
+           end
     # id_array.each do |id|
     # locations << instagram_client.location_search(id)
     #   end

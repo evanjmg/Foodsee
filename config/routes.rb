@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
  resources :image_collections, only: [:index, :new, :create, :destroy] 
- 
+ resources :images
  resources :search, only: [:index, :new, :image_results]
-
+ # match 'tagged', to: 'posts#tagged', as: 'tagged'
 
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   devise_for :users, :skip => [:sessions], :controllers => {  :omniauth_callbacks => "users/omniauth_callbacks"}
