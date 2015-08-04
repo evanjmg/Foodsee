@@ -4,4 +4,5 @@
 </p>
 <% @image.tags.any? %>
   <% @image.tags.each do |tag| %>
+  <%= link_to tag.name,  tag_images_path(tag.name) %>
 <% end %>

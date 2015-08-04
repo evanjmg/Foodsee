@@ -1,11 +1,13 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
   
-  def tagged
-    if params[:tag].present? 
+  def tag
+    @tag = params[:tag]
+    if @tag.present? 
       @images = Image.tagged_with(params[:tag])
+      
     else 
-      @images = Image.postall
+      @images = Image.all
     end  
   end
 

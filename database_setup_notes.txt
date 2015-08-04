@@ -46,7 +46,7 @@ belongs_to :user
 user_id
 belongs_to :restaurant
 
-RESTAURANT (all from zomato api)
+RESTAURANT 
 has one: collection of images
 
 lat: float (→   The complete address for the restaurant string
@@ -68,4 +68,8 @@ belongs to collection
 
 Restaurant Collection 
 has many restaurants
+has many image collections through :restaurants
+name 
+
+
 
