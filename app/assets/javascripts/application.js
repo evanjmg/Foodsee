@@ -21,6 +21,7 @@ $(function(){
   var counter = 0;
   $('div#counter').html(counter);
  $(document).foundation().foundation('topbar');
+ $('#instagram-login').hide().fadeIn(2000)
   $('div#search-api-results form input').css('display', 'none');
   $('div#search-api-results form input#submit-selection').css('display', 'inline-block');
    $('div#search-api-results form img').on("click", function () {

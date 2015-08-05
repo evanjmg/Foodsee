@@ -1,8 +1,8 @@
 <div class="row">
-<div class="small-1 small-centered columns width-change">
+<div class=" small-centered columns width-change">
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to  omniauth_authorize_path(resource_name, provider), id: 'instagram-login' do %><%= image_tag "http://www.salmontini.co.uk/wp-content/themes/salmontini/img/icon-instagram.png", id: 'instagram-icon' %> <%= "Log in with #{provider.to_s.titleize}" %><% end %>
+    <%= link_to  omniauth_authorize_path(resource_name, provider), id: 'instagram-login', class: "animated  pulse" do %><%= image_tag "http://www.salmontini.co.uk/wp-content/themes/salmontini/img/icon-instagram.png", id: 'instagram-icon' %> <%= "Login with #{provider.to_s.titleize}" %><% end %>
   <% end -%>
 <% end -%>
   </div>

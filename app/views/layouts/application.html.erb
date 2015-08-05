@@ -14,14 +14,20 @@
   
   <% if current_user %>
   <body>
+  <div class="wrapper">
   <%= render 'layouts/header' %>
   <% else %>
    <body class='landing-page'>
+   <div class="wrapper">
     
   <% end %>
 <div class="main-container">
     <%= yield %>
     </div>
-    <footer>&copy; 2015 Evan Gillogley</footer>
+    <div class="push"></div>
+    </div>
+  <div class="footer"><span>&copy; 2015 Evan Gillogley</span></div>
   </body>
 </html>
+
+

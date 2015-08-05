@@ -1,6 +1,16 @@
+* {
+margin: 0;
+}
+html, body {
+  height: 100%;
+}
 div.fixed {
   margin-bottom: 200px;
   position:fixed;
+}
+.wrapper {
+  min-height: 100%;
+  margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
 }
 div.main-container {
   margin-top: 125px;
@@ -8,11 +18,24 @@ div.main-container {
   width:90%;
   margin:auto;
 }
+input[type="submit"] {
+  color:white;
+  background-color: #EE352A;
+  border-radius: 8px;
+  border-color:red;
+  padding:8px;
+}
 li.category {
   list-style: none;
   color: #727272;
   opacity: 0.6;
   display:inline;
+}
+h2#tagline {
+font-size: 15px;
+text-align: center;
+color:white;
+margin-bottom: 20px;
 }
 .restaurant-title {
   display:inline-block;
@@ -29,40 +52,59 @@ li.category {
 .landing-page {
   background-color:#EE352A;
 }
-#foodseelogo-large {
+#foodseelogo-lrg {
   text-align: center;
-  margin-left: 40%;
+  max-width: 500px;
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+  margin-top: 25px;
+  margin-bottom: 75px;
 }
 
 a#instagram-login {
   margin-left: auto;
   margin-right: auto;
+  display:block;
   text-align: center;
   color:white;
   width:250px;
   background-color:#5980A2;
-  padding:20px;
+  padding:5px;
   border-radius:10px;
   #instagram-icon {
     width:50px;
+    margin-right: 10px;
+    margin-left: -10px;
   }
 }
 .width-change {
   width:300px;
 }
 
-@media screen and (max-width: 620px) {
-  a#instagram-login {
-    padding:5px;
-    width:150px;
-  }
-  #foodseelogo-large {
-    width:200px;
-    margin-left:20%;
-  }
-}
-footer {
+
+.footer {
   text-align: center;
   color:white;
+  background-color:  #EE352A;
+}
+.footer, .push {
+  height: 50px; /* '.push' must be the same height as 'footer' */
+}
+.footer span {
   opacity: 0.5;
+  vertical-align: middle;
+  line-height: 50px;
+}
+@media screen and (max-width: 620px) {
+  a#instagram-login {
+    padding:10px;
+    width:200px;
+  }
+  a#instagram-login #instagram-icon {
+    width:25px;
+  }
+  #foodseelogo-lrg {
+    max-width:275px;
+  }
 }

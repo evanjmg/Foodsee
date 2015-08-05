@@ -21,7 +21,7 @@
   <div id="counter"></div>
 </div>
 <div class="small-5 large-3 columns">
-<%= f.submit "Get Restaurants", id: 'submit-selection' %>
+<%= f.submit "Get Restaurants", id: 'submit-selection', class: "animated pulse" %>
 </div>
 </div>
 <%= f.collection_check_boxes(:image_ids, @images, :id, :thumbnail_url) do |b| %>
