@@ -15,13 +15,10 @@ class UsersController < ApplicationController
     @images = []
     image_ids = params["/search"]["image_ids"].reject(&:empty?)
     image_ids.each do |image_id|
-      current_user.images << Image.find_by(id: image_id)
+      @images << Image.find_by(id: image_id)
+      current_user.images << @images
     end
-    if @images
-      redirect_to selected_restaurants_path, notice: "Here are the restaurants and their images."
-    else 
-      redirect_to new_search_path, notice: "Did you select the images? Please try your search again."
-    end
+      redirect_to selected_restaurants_path(:image_ids => @images), notice: "Here are the restaurants and their images."
   end
 
   # PATCH/PUT /users/:id.:format

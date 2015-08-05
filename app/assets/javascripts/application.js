@@ -16,8 +16,8 @@
 //= require turbolinks
 //= require_tree .
 
-$(function(){ $(document).foundation();
-
+$(function(){ $(document).foundation().foundation('topbar');
+  $('div#search-api-results form input').css('visibility', 'hidden')
 $('input#search-button').on('click', function () {
   $('div.new-search-content').addClass('animated fadeIn whirly-loader');
   $('div.load-message').fadeIn("slow");

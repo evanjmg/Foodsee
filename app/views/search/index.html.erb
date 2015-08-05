@@ -12,13 +12,14 @@
 <% end %>
 
 <h1>Select up to 10 Food Photos to find Restaurants near you</h1>
-
+<div id="search-api-results">
 <%= form_for(add_search_images_to_user_path) do |f| %>
 
 <%= f.collection_check_boxes(:image_ids, @images, :id, :thumbnail_url) do |b| %>
-  <%= image_tag(b.object.thumbnail_url) %><%= b.check_box %>
+  <%= b.label do %><%= image_tag(b.object.thumbnail_url) %><% end %><%= b.check_box %>
 <% end %>
 
 
 <%= f.submit "Get Restaurants" %>
 <% end %>
+</div>

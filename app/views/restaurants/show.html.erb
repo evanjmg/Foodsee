@@ -1,3 +1,33 @@
+<%= hidden_field_tag 'lat', value = @restaurant.latitude, id: "lat"%>
+<%= hidden_field_tag 'lon', value = @restaurant.longitude, id: "lon"%>
+  <script>
+   var lat = document.getElementById('lat').value;
+   var lon = document.getElementById('lon').value;
+   var myCenter=new google.maps.LatLng(lat,lon);
+
+   function initialize()
+   {
+   var mapProp = {
+     center:myCenter,
+     zoom:14,
+     mapTypeId:google.maps.MapTypeId.ROADMAP
+     };
+
+   var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+   var marker=new google.maps.Marker({
+     position:myCenter,
+     });
+
+   marker.setMap(map);
+
+   }
+
+   google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+
+
+
   <h3>  <%= link_to @restaurant do %><%= @restaurant.name %><% end %></h3>
     <h4>Categories:</h4>
     <% if @restaurant.category.empty? %>
@@ -5,9 +35,10 @@
     <% else %>
     <ul>
   <% @restaurant.category.each do |category| %>
-    <li><%= category %></li>
+    <li class="category"><%= link_to "#" do %><%= category %><% end %></li>
   <% end %>
-  
+  <div id="googleMap" style="width:200px;height:200px;"></div>
+
   <% end %>
   </ul>
   <% @restaurant.images.each do |image| %>

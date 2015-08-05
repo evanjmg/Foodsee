@@ -1,6 +1,23 @@
 div.fixed {
-  margin-bottom: 100px;
+  margin-bottom: 200px;
+  position:fixed
 }
 div.main-container {
-  margin:20px;
+  margin-top: 125px;
+  padding-top:20px;
+  width:90%;
+  margin:auto;
+}
+li.category {
+  list-style: none;
+  color: #727272;
+  opacity: 0.6;
+  display:inline;
+}
+.restaurant-title {
+  display:inline-block;
+}
+.sticky{
+    position:fixed;
+    z-index:999;
 }

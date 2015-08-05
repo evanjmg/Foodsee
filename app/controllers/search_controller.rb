@@ -11,8 +11,8 @@ class SearchController < ApplicationController
   # Create restaurants from Facebook Places data
   data.each do |restaurant|
     categories = []
-    lat  = restaurant['location']['longitude']
-    long = restaurant['location']['latitude']
+    lat = restaurant['location']['latitude']
+    long  = restaurant['location']['longitude']
     name = restaurant['name']
     facebook_id = restaurant['id'].to_s
     restaurant['category_list'].each do |category|
@@ -24,9 +24,10 @@ class SearchController < ApplicationController
 # Pull location and send to Instagram to Get and Create Images
 
 @images = []
- temp_restaurants[0..1].each do |restaurant|
+if temp_restaurants != nil
+ temp_restaurants.each do |restaurant|
 
-  instagram_place = instagram_client.location_search(restaurant.longitude, restaurant.latitude)
+  instagram_place = instagram_client.location_search(restaurant.latitude, restaurant.longitude)
 
   restaurant.instagram = instagram_place[0].id.to_s 
   
@@ -42,7 +43,9 @@ class SearchController < ApplicationController
   end
   restaurant.save
 end
-
+else 
+  render :new, notice: "No results. Please try again."
+end
 end
 
 end

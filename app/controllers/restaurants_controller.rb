@@ -2,11 +2,17 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurants, only: [:show]
 
   def selected
+    @images = []
+    image_ids = params[:image_ids]
+    image_ids.each do |image_id|
+      @images << Image.find(image_id)
+    end
     restaurants = []
-    current_user.images.each do |image|
+    @images.each do |image|
       restaurants <<  image.restaurant
     end 
     @restaurants = restaurants.uniq
+    # a = current.images.all - @restaurants
 
   end
   def show
