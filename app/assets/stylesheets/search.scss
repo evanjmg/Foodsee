@@ -11,3 +11,10 @@
   font-weight: bold;
   color: #F76B1C;
 }
+@media only screen and (max-width: 640px) {
+  #search-button {
+    text-align: center;
+    font-size: 0.7rem;
+    padding:0;
+  }
+}

@@ -1,13 +1,6 @@
 Rails.application.routes.draw do
-  get 'restaurants_collections/index'
 
-  get 'restaurants_collections/destroy'
 
-  get 'restaurants_collections/create'
-
-  get 'restaurants_collections/new'
-
- resources :image_collections, only: [:index, :new, :create, :destroy] 
  resources :images
 match "/images/tag/:tag", to: "images#tag", :via => [:get], :as => :tag_images
   get 'users/my_account', to: "users#my_account", as: 'my_account' 
@@ -23,7 +16,7 @@ match "/images/tag/:tag", to: "images#tag", :via => [:get], :as => :tag_images
     match 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session,
       :via => Devise.mappings[:user].sign_out_via
     authenticated :user do
-      root 'search#index', as: :authenticated_root
+      root 'search#new', as: :authenticated_root
     end
 
     unauthenticated do

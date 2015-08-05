@@ -8,7 +8,7 @@
         <div class="row collapse">
           <div class="small-10 columns">
 
-            <%= form_tag(new_image_collection_path, :method => "get") do %>
+            <%= form_tag(search_index_path, :method => "get") do %>
             <%= search_field_tag :search_query, params[:search_query], placeholder: "Search Photos" %>
             <%= hidden_field_tag 'lat', value = '', id: "lat"%>
             <%= hidden_field_tag 'lon', value = '', id: "lon"%>
