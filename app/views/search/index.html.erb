@@ -11,15 +11,28 @@
 </div>
 <% end %>
 
-<h1>Select up to 10 Food Photos to find Restaurants near you</h1>
+<h2>Select up to 10 Food Photos to find Restaurants near you</h2>
 <div id="search-api-results">
 <%= form_for(add_search_images_to_user_path) do |f| %>
-
+<div class="row">
+<div class="small-4 large-7 columns">
+</div>
+<div class="small-3 large-2 columns">
+  <div id="counter"></div>
+</div>
+<div class="small-5 large-3 columns">
+<%= f.submit "Get Restaurants", id: 'submit-selection' %>
+</div>
+</div>
 <%= f.collection_check_boxes(:image_ids, @images, :id, :thumbnail_url) do |b| %>
-  <%= b.label do %><%= image_tag(b.object.thumbnail_url) %><% end %><%= b.check_box %>
+  
+  <li>
+  <%= b.label do %>
+  <div class="image-container">
+  <%= image_tag(b.object.thumbnail_url) %>
+  </div>
+  <% end %>
+  <%= b.check_box %></li>
 <% end %>
-
-
-<%= f.submit "Get Restaurants" %>
 <% end %>
 </div>

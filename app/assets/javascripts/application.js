@@ -16,8 +16,35 @@
 //= require turbolinks
 //= require_tree .
 
-$(function(){ $(document).foundation().foundation('topbar');
-  $('div#search-api-results form input').css('visibility', 'hidden')
+
+$(function(){
+  var counter = 0;
+  $('div#counter').html(counter);
+ $(document).foundation().foundation('topbar');
+  $('div#search-api-results form input').css('display', 'none');
+  $('div#search-api-results form input#submit-selection').css('display', 'inline-block');
+   $('div#search-api-results form img').on("click", function () {
+    var clicks = $(this).data('clicks');
+    
+    if (clicks) {
+      counter--;
+    
+      $('div#counter').html(counter);
+      $(this).css('opacity', '1');
+      $(this).parent().css('background-image', 'none');
+      $(this).hover(function () {$(this).css('background-color', '#EE352A'); });
+
+    }
+    else {
+   counter++;
+      $('div#counter').html(counter);
+     $(this).css('opacity', '0.5');
+     $(this).parent().css("background-image", "url('https://s3-eu-west-1.amazonaws.com/foodsee/uploads/app_elements/check-mark.png')");
+  }
+    $(this).data("clicks", !clicks);
+    counter;
+  });
+
 $('input#search-button').on('click', function () {
   $('div.new-search-content').addClass('animated fadeIn whirly-loader');
   $('div.load-message').fadeIn("slow");

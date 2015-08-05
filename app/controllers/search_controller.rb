@@ -25,7 +25,7 @@ class SearchController < ApplicationController
 
 @images = []
 if temp_restaurants != nil
- temp_restaurants.each do |restaurant|
+ temp_restaurants[0..1].each do |restaurant|
 
   instagram_place = instagram_client.location_search(restaurant.latitude, restaurant.longitude)
 

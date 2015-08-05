@@ -18,3 +18,26 @@
     padding:0;
   }
 }
+input#submit-selection {
+  background-color:#EE352A;
+  color:white;
+  border-radius: 5px;
+}
+div#search-api-results form div.image-container {
+background-color: #EE352A;
+
+}
+div#search-api-results form div.image-container 
+div#search-api-results form div.image-container:hover img {
+  opacity: 0.6;
+} 
+div#search-api-results form div.image-container img:hover {
+  opacity: 0.6;
+} 
+div#search-api-results form > label, > div, > li, > input {
+  display: inline-block;
+}
+div#search-api-results form div.image-container:active:hover img:hover {
+  opacity: 0.6;
+}
+

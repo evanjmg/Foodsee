@@ -1,6 +1,6 @@
 div.fixed {
   margin-bottom: 200px;
-  position:fixed
+  position:fixed;
 }
 div.main-container {
   margin-top: 125px;
@@ -20,4 +20,49 @@ li.category {
 .sticky{
     position:fixed;
     z-index:999;
+}
+.landing-page-container {
+  margin:0;
+  background-color: #EE352A;
+}
+
+.landing-page {
+  background-color:#EE352A;
+}
+#foodseelogo-large {
+  text-align: center;
+  margin-left: 40%;
+}
+
+a#instagram-login {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color:white;
+  width:250px;
+  background-color:#5980A2;
+  padding:20px;
+  border-radius:10px;
+  #instagram-icon {
+    width:50px;
+  }
+}
+.width-change {
+  width:300px;
+}
+
+@media screen and (max-width: 620px) {
+  a#instagram-login {
+    padding:5px;
+    width:150px;
+  }
+  #foodseelogo-large {
+    width:200px;
+    margin-left:20%;
+  }
+}
+footer {
+  text-align: center;
+  color:white;
+  opacity: 0.5;
 }
