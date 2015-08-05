@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-
+ get '/restaurants/selected', to: 'restaurants#selected', as: 'selected_restaurants'
+ resources :restaurants
+  post '/search', to: 'users#add_search_images_to_user', as: 'add_search_images_to_user'
  resources :images
 match "/images/tag/:tag", to: "images#tag", :via => [:get], :as => :tag_images
   get 'users/my_account', to: "users#my_account", as: 'my_account' 

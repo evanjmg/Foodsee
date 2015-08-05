@@ -1,0 +1,16 @@
+  <h3>  <%= link_to @restaurant do %><%= @restaurant.name %><% end %></h3>
+    <h4>Categories:</h4>
+    <% if @restaurant.category.empty? %>
+    N/A
+    <% else %>
+    <ul>
+  <% @restaurant.category.each do |category| %>
+    <li><%= category %></li>
+  <% end %>
+  
+  <% end %>
+  </ul>
+  <% @restaurant.images.each do |image| %>
+    <%= link_to image do %><%= image_tag image.thumbnail_url %>
+    <% end %>
+  <% end %>

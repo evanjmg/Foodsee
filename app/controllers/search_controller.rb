@@ -23,8 +23,8 @@ class SearchController < ApplicationController
 
 # Pull location and send to Instagram to Get and Create Images
 
-@image_urls = []
- temp_restaurants.each do |restaurant|
+@images = []
+ temp_restaurants[0..1].each do |restaurant|
 
   instagram_place = instagram_client.location_search(restaurant.longitude, restaurant.latitude)
 
@@ -37,7 +37,7 @@ class SearchController < ApplicationController
       image.tag_list = media_item.tags.to_s
       image.save
       restaurant.images << image
-    @image_urls << media_item.images.thumbnail.url
+    @images << image
     end
   end
   restaurant.save

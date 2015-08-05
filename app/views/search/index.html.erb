@@ -1,6 +1,24 @@
 
-<h1>Select up to 10 Food Images You Like.</h1>
+<% if current_user.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(current_user.errors.count, "error") %> occurred:</h2>
 
-<% @image_urls.each do |image_url| %>
-  <img src='<%= image_url %>'>
+  <ul>
+    <% current_user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<h1>Select up to 10 Food Photos to find Restaurants near you</h1>
+
+<%= form_for(add_search_images_to_user_path) do |f| %>
+
+<%= f.collection_check_boxes(:image_ids, @images, :id, :thumbnail_url) do |b| %>
+  <%= image_tag(b.object.thumbnail_url) %><%= b.check_box %>
+<% end %>
+
+
+<%= f.submit "Get Restaurants" %>
 <% end %>

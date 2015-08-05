@@ -11,6 +11,18 @@ class UsersController < ApplicationController
   def edit
     # authorize! :update, @user
   end
+  def add_search_images_to_user
+    @images = []
+    image_ids = params["/search"]["image_ids"].reject(&:empty?)
+    image_ids.each do |image_id|
+      current_user.images << Image.find_by(id: image_id)
+    end
+    if @images
+      redirect_to selected_restaurants_path, notice: "Here are the restaurants and their images."
+    else 
+      redirect_to new_search_path, notice: "Did you select the images? Please try your search again."
+    end
+  end
 
   # PATCH/PUT /users/:id.:format
   def update
@@ -53,12 +65,18 @@ class UsersController < ApplicationController
   
   private
     def set_user
-      @user = User.find(params[:id])
+
+      
+      if params[:id] == nil
+        @user = current_user
+      else 
+        @user = User.find(params[:id])
+      end
     end
 
     def user_params
-      accessible = [ :name, :email, :username, :image ] # extend with your own params
+      accessible = [ :name, :email, :username] # extend with your own params
       accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
-      params.require(:user).permit(accessible)
+      params.require(:user).permit(accessible,:image_ids => [] )
     end
 end
