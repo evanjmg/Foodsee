@@ -1,6 +1,6 @@
 <div class="loading-wrapper">
   <div class="new-search-content">
-  
+
 
     <h2>Search Food Photos</h2>
     <div class="row">
@@ -14,37 +14,62 @@
             <%= hidden_field_tag 'lon', value = '', id: "lon"%>
 
           </div>
-          <div class="small-2 columns desktop-button">
-            <%= submit_tag "Search", class: "button postfix animated pulse expand", id: 'search-button'  %>
-          </div>
-          <div class="row responsive-button">
-            <%= submit_tag "Search", class: "button postfix animated pulse expand", id: 'search-button' %>
+          <div class="row ">
+            <%= submit_tag "Search", class: "button postfix expand", id: 'search-button' %>
           </div>
         </div>
       </div>
     </div>
 
-<% end %>
-  </div>
-  <div class='load-message'>Please wait a minute. <br/>While we search for your photos.</div>
-    <script>
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(GeoL);
-        if (document.getElementById('lat') === null) {
-         OtherThanGeo(); 
+    <% end %>
+
+    <div class="row slider-margin">
+  <% if !@images.empty? %>
+      <ul class="example-orbit" data-orbit data-options="timer_speed: 3000;animation: 'fade';">
+  <% counter = 1 %>
+
+          <% @images.shuffle[0..10].each do |image|  %>
+          <li>
+  
+          <%= image_tag image.url, alt: "slide #{counter}",style: "margin-left:auto;margin-right:auto; width:400px;" %>
+          <% counter += 1 %>
+          <div class="orbit-caption hashtags-show-image slider-caption" style="border-radius:5px;" >
+           <div class="row">
+          <%= link_to restaurant_path(image.restaurant) do %> <%= image.restaurant.name %><% end %>
+            <div class="row hashtags-show-image">
+            <% if image.tags.any? %>
+              <% image.tags[0..6].each do |tag| %>
+              <% if !tag.name.blank? %>
+              #<%= link_to tag.name.tr("[]",""),  tag_images_path(tag.name), class: "tags-slider" %>
+              <% end %>
+              <% end %>
+              <% end %>
+          </div>
+          </li>
+       <% end %>
+   
+        </ul>
+        <% end %>
+      </div>
+      <div class='load-message'>Please wait a minute. <br/>While we search for your photos.</div>
+      <script>
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(GeoL);
+          if (document.getElementById('lat') === null) {
+           OtherThanGeo(); 
+         }
        }
+       else {
+        OtherThanGeo();
+      }
+      function OtherThanGeo () {
+       $('input#search_query').html("Geolocation is not supported by this browser. Please Provide your address.");
+       form = document.createElement("input");
+       form.attr({ name: "address", id: "address", title: "Address", placeholder: "Type Address"});
+       document.getElementsByTagName('form')[0].appendChild(form)
      }
-     else {
-      OtherThanGeo();
+     function GeoL(position) {
+      document.getElementById('lat').value = position.coords.latitude;
+      document.getElementById('lon').value = position.coords.longitude;
     }
-    function OtherThanGeo () {
-     $('input#search_query').html("Geolocation is not supported by this browser. Please Provide your address.");
-     form = document.createElement("input");
-     form.attr({ name: "address", id: "address", title: "Address", placeholder: "Type Address"});
-     document.getElementsByTagName('form')[0].appendChild(form)
-   }
-   function GeoL(position) {
-    document.getElementById('lat').value = position.coords.latitude;
-    document.getElementById('lon').value = position.coords.longitude;
-  }
-</script>
+  </script>

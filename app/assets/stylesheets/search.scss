@@ -4,7 +4,7 @@
 
 #search-button {
   text-align: center;
-  font-size: 0.7rem;
+  font-size: 1rem;
   padding:0;
 }
 .load-message {
@@ -16,7 +16,17 @@
   font-weight: bold;
   color: #F76B1C;
 }
-
+.slider-margin {
+}
+.slider-caption {
+  a {
+    color:white;
+    font-size:16px;
+  }
+  a:hover {
+   text-decoration: underline; 
+  }
+}
 @media only screen and (max-width: 640px) {
 
   #search-button {
@@ -28,6 +38,8 @@
     margin-left:4%;
   }
 }
+.hashtags-show-image a.tags-slider { 
+color: white;}
 input#submit-selection {
   background-color:#EE352A;
   color:white;

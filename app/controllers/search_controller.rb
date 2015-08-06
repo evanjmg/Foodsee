@@ -1,6 +1,7 @@
 class SearchController < ApplicationController
  before_action :authenticate_user!
  def new
+  @images = Image.all
  end
  def recent 
   

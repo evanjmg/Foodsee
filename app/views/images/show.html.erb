@@ -4,41 +4,42 @@
 <% else %>
 <h4 class="show-image">Photo from <%= @image.restaurant.name %></h4>  
 <%=  %>
-  <%= link_to image_tag(@image.image_file.thumb.url), @image.image_file.url %>
+<%= link_to image_tag(@image.image_file.thumb.url), @image.image_file.url %>
 </p>
 <div class="row">
-<div class="small-6 small-centered centering-show-image columns">
-<%= image_tag @image.url, class: 'show-image' %>
-</div>
+  <div class="small-6 small-centered centering-show-image columns">
+    <%= image_tag @image.url, class: 'show-image' %>
   </div>
-<% @image.tags.any? %>
+</div>
+<% if @image.tags.any? %>
 <div class="row hashtags-show-image">
   <% @image.tags.each do |tag| %>
-  #<%= link_to tag.name,  tag_images_path(tag.name) %>
-<% end %>
+  #<%= link_to tag.name.tr("[]",""),  tag_images_path(tag.name) %>
+  <% end %>
+  <% end %>
 </div>
 <p class="show-page-buttons">
-<div class="row">
-<% if  @image.users.include?(current_user) %>
-<div class="small-4 columns">
-<button class="but">
-  <%= link_to "Restaurant", restaurant_path(@image.restaurant), class: "show-page-button" %></button>
-</div>
-<div class="small-4 columns">
-<button class="but">
-  <%= link_to "Edit", edit_image_path(@image), class: "show-page-button" %></button>
-</div>
-<div class="small-4 columns">
-<button class="but">
-  <%= link_to 'Delete', @image, method: :delete, class: "show-page-button" %>
-  </button>
-</div>
-<% else %>
-<div class="small-12 small-centered columns">
-<button class="but">
-<%= link_to "Go to Restaurant", restaurant_path(@image.restaurant), class: "show-page-button" %>
-  </button>
-</div>
-<% end %>
-</div>
-  </p>
+  <div class="row">
+    <% if  @image.users.include?(current_user) %>
+    <div class="small-4 columns">
+      <button class="but">
+        <%= link_to "Restaurant", restaurant_path(@image.restaurant), class: "show-page-button" %></button>
+      </div>
+      <div class="small-4 columns">
+        <button class="but">
+          <%= link_to "Edit", edit_image_path(@image), class: "show-page-button" %></button>
+        </div>
+        <div class="small-4 columns">
+          <button class="but">
+            <%= link_to 'Delete', @image, method: :delete, class: "show-page-button" %>
+          </button>
+        </div>
+        <% else %>
+        <div class="small-12 small-centered columns">
+          <button class="but">
+            <%= link_to "Go to Restaurant", restaurant_path(@image.restaurant), class: "show-page-button" %>
+          </button>
+        </div>
+        <% end %>
+      </div>
+    </p>
