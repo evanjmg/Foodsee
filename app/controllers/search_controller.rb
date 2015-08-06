@@ -2,6 +2,9 @@ class SearchController < ApplicationController
  before_action :authenticate_user!
  def new
  end
+ def recent 
+  
+ end
  def index
   # Get Facebook data through query
   response = facebook_restaurant_search(params[:search_query], params[:lat], params[:lon], 3000)

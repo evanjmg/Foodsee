@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_restaurants, only: [:show]
-
+  before_action :set_restaurants, only: [:show, :destroy]
+  
   def selected
     @images = []
     image_ids = params[:image_ids]
@@ -23,7 +23,13 @@ class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all
   end
-
+ def destroy
+   @restaurant.destroy
+   respond_to do |format|
+     format.html { redirect_to workouts_url, notice: 'Workout was successfully destroyed.' }
+     format.json { head :no_content }
+   end
+ end
   private 
   def set_restaurants
     @restaurant = Restaurant.find(params[:id])

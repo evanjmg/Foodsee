@@ -1,6 +1,15 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :finish_signup]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :finish_signup, :my_restaurants, :my_photos]
+  def my_restaurants
+
+    restaurants = []
+    current_user.images.each do |image|
+      restaurants << image.restaurant
+    end
+    @restaurants = restaurants.uniq
+
+  end
   def index
     @users = User.all
   end
@@ -10,7 +19,6 @@ class UsersController < ApplicationController
   end
   def my_photos
      @images = current_user.images.uniq 
-    
   end
   # GET /users/:id/edit
   def edit

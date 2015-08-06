@@ -8,10 +8,15 @@ div.fixed {
   margin-bottom: 200px;
   position:fixed;
 }
+
+div.logo-nav {
+  width:180px;
+}
 .wrapper {
   height: 100%;
   margin: 0 auto -60px; /* the bottom margin is the negative value of the footer's height */
 }
+
 div.main-container {
   margin-top: 125px;
   padding-top:20px;
@@ -25,12 +30,7 @@ input[type="submit"] {
   border-color:red;
   padding:8px;
 }
-li.category {
-  list-style: none;
-  color: #727272;
-  opacity: 0.6;
-  display:inline;
-}
+
 h2#tagline {
 font-size: 15px;
 text-align: center;
@@ -61,7 +61,10 @@ margin-bottom: 20px;
   margin-top: 25px;
   margin-bottom: 75px;
 }
-
+img#restaurant-icon {
+  width:52px;
+  margin-top: 5px;
+}
 a#instagram-login {
   margin-left: auto;
   margin-right: auto;
@@ -110,14 +113,53 @@ margin-top: -5px;
 
 }
 
-img#search-icon {
-  margin-bottom: -20px;
+div.header-bg-color {
+  background-color:  #EE352A;
 }
-@media screen and (max-width: 620px) {
+li.hamburger-li {
+  list-style: none;
+}
+div.logo-nav {
+
+}
+img#search-icon {
+display:none;
+}
+section.top-bar-section {
+  margin-top: -50px;
+}
+@media screen and (max-width: 640px) {
+  f-topbar-fixed .top-bar-section .dropdown li a {
+    background: #EE352A;
+  }
+  div.logo-nav {
+    width:33%;
+    margin-left:-10%;
+  }
+  img#search-icon {
+    display:inline-block;
+    margin-bottom: 0px;
+    margin-left:20%;
+  }
+  img.nav-logo {
+    width: 100px;
+    margin-bottom: 10px;
+    margin-left:20px;
+  }
+ div.logo-nav {
+   width:180px;
+ }
   img#my-photos-button {
   width:55px;
   margin-top: -5px;
 
+  }
+  div.burger {
+    position:absolute;
+    top:0;
+    right:0;
+    margin:10px;
+    margin:0 5% 20px 0;
   }
  .wrapper {
    height: 100%;

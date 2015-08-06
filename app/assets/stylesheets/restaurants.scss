@@ -1,0 +1,19 @@
+.restaurant-title a:hover {
+text-decoration: underline;
+}
+li.category {
+  list-style: none;
+  color: #727272;
+  opacity: 0.6;
+  display:inline;
+}
+
+@media screen and (max-width: 640px) {
+  
+  .responsive-categories {
+    display:none;
+  }
+}
+.restaurant div {
+  padding-bottom: 20px;
+}
