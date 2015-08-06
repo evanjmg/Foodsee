@@ -24,13 +24,10 @@ margin-bottom: 20px;
 }
 
 @media screen and (max-width: 600px) {
- div.agm_google_maps {
-  display:none;
- }
-  #googleMap {
-display:none;
 
-  }
+#googleMap {
+  display:none;
+}
 
   .responsive-categories {
     display:none;

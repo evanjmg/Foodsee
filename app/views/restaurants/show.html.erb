@@ -1,55 +1,63 @@
 <%= hidden_field_tag 'lat', value = @restaurant.latitude, id: "lat"%>
 <%= hidden_field_tag 'lon', value = @restaurant.longitude, id: "lon"%>
- <script src="http://maps.googleapis.com/maps/api/js"></script>
-  <script>
-   var lat = document.getElementById('lat').value;
-   var lon = document.getElementById('lon').value;
-   var myCenter=new google.maps.LatLng(lat,lon);
 
-   function initialize()
-   {
+
+<div class="row" style="margin-bottom:30px;">
+  <div id="googleMap" class="row" clas="googleMap"></div>
+  <div class="padding:20px;margin:20px;width:300px;display:block;">
+    <h3> <%= link_to @restaurant do %><%= @restaurant.name %><% end %></h3>
+    <% if @restaurant.category.empty? %>
+    <% else %>
+    <ul class="restaurant-categories-show">
+      <% @restaurant.category.each do |category| %>
+      <li class="category"><%= link_to "#" do %><%= category %><% end %></li>
+      <% end %>
+    </ul>
+    <p>
+      <%= @restaurant.address %>
+    </p>
+    <p>
+      <div class="row" style="margin-left:0px;">
+        <%= link_to "http://facebook.com/#{@restaurant.facebook}" do %>
+        <%= image_tag "https://s3-eu-west-1.amazonaws.com/foodsee/uploads/app_elements/facebook-logo.png", width: '37px' %><% end %>
+      </div>
+    </p>
+    <% end %>
+  </div>
+  
+</div>
+<div id="googleMap"></div>
+<div class="row">
+  <% @restaurant.images.each do |image| %>
+  <li class="list-images">
+    <%= link_to image do %><%= image_tag image.thumbnail_url %>
+  </li>
+  <% end %>
+  <% end %>
+</div>
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script>
+ var lat = document.getElementById('lat').value;
+ var lon = document.getElementById('lon').value;
+ var myCenter=new google.maps.LatLng(lat,lon);
+
+ function initialize()
+ {
    var mapProp = {
      center:myCenter,
      zoom:14,
      mapTypeId:google.maps.MapTypeId.ROADMAP
-     };
+   };
 
    var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
    var marker=new google.maps.Marker({
      position:myCenter,
-     });
+   });
 
    marker.setMap(map);
 
-   }
+ }
 
-   google.maps.event.addDomListener(window, 'load', initialize);
-  </script>
-
-<div class="row" style="margin-bottom:30px;">
-  <div id="googleMap" class="row" clas="googleMap"></div>
-  <div class="padding:20px;margin:20px;width:300px;display:block;">
-  <h3> <%= link_to @restaurant do %><%= @restaurant.name %><% end %></h3>
-    <% if @restaurant.category.empty? %>
-    <% else %>
-    <ul class="restaurant-categories-show">
-  <% @restaurant.category.each do |category| %>
-    <li class="category"><%= link_to "#" do %><%= category %><% end %></li>
-  <% end %>
-  </ul>
-  <p>
-  <%= @restaurant.address %>
-  </p>
-  <% end %>
-  </div>
-  </div>
-  <div id="googleMap" class="row" class="responsive"></div>
-  <div class="row">
-  <% @restaurant.images.each do |image| %>
-  <li class="list-images">
-    <%= link_to image do %><%= image_tag image.thumbnail_url %>
-  </li>
-    <% end %>
-  <% end %>
-  </div>
+ google.maps.event.addDomListener(window, 'load', initialize);
+</script>
