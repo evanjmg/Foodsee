@@ -16,12 +16,14 @@ div.logo-nav {
   height: 100%;
   margin: 0 auto -60px; /* the bottom margin is the negative value of the footer's height */
 }
-
+.change-width {
+  width:150px;
+}
 div.main-container {
-  margin-top: 125px;
   padding-top:20px;
   width:90%;
-  margin:auto;
+  margin-left:auto;
+  margin-right:auto;
 }
 input[type="submit"] {
   color:white;
@@ -47,6 +49,7 @@ margin-bottom: 20px;
 .landing-page-container {
   margin:0;
   background-color: #EE352A;
+  float:right;
 }
 
 .landing-page {
@@ -128,7 +131,66 @@ display:none;
 section.top-bar-section {
   margin-top: -50px;
 }
+ div.landing-page-main-container {
+width:1000px;
+margin:auto;
+ }
+ div.divider {
+  height:150px;
+ }
+ div.app-store > div.wrapper-apps {
+  display:inline-block;
+  width:150px;
+  float:right;
+ }
+ 
+ div.app-store > div.wrapper-apps > div > img {
+  display:inline-block;
+  float:none;
+ }
+ div.app-store > div.wrapper-apps{
+  width:400px;
+ }
+ .store-image {
+  float:left;
+  margin-top:3px;
+ }
+ .phone-image-container  {
+  float:left;
+ }
+ .responsive-button {
+  display:none;
+ }
 @media screen and (max-width: 640px) {
+  input.submit-selection {
+    display:block;
+    
+  }
+  .desktop-button {
+    display:none;
+  }
+  .responsive-button {
+   display:block;
+  }
+
+  div.landing-page-container {
+    float:none;
+    width:400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  div.landing-page-main-container {
+    width:100%;
+  }
+  div.divider, div.app-store, div.phone-image-container, div.phone-image-container > div {
+    display:none;
+    float:none;
+  }
+
+  img#restaurant-icon {
+    width:50px;
+    margin-top: 0px;
+  }
   f-topbar-fixed .top-bar-section .dropdown li a {
     background: #EE352A;
   }
@@ -144,7 +206,7 @@ section.top-bar-section {
   img.nav-logo {
     width: 100px;
     margin-bottom: 10px;
-    margin-left:20px;
+    margin-left:50px;
   }
  div.logo-nav {
    width:180px;
@@ -165,8 +227,9 @@ section.top-bar-section {
    height: 100%;
    margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
  }
+ 
   .footer, .push {
-    height: 50px; /* '.push' must be the same height as 'footer' */
+    height: 53px; /* '.push' must be the same height as 'footer' */
   }
   img#camera-button {
     width:70px;
@@ -178,6 +241,7 @@ section.top-bar-section {
   }
   a#instagram-login #instagram-icon {
     width:25px;
+    padding-left:5px;
   }
   #foodseelogo-lrg {
     max-width:275px;

@@ -29,7 +29,7 @@ $(function(){
     if (clicks) {
       counter--;
     
-      $('div#counter').html(counter);
+      $('span#counter').html(counter);
       $(this).css('opacity', '1');
       $(this).parent().css('background-image', 'none');
       $(this).hover(function () {$(this).css('background-color', '#EE352A'); });
@@ -37,7 +37,7 @@ $(function(){
     }
     else {
    counter++;
-      $('div#counter').html(counter);
+      $('span#counter').html(counter);
      $(this).css('opacity', '0.5');
      $(this).parent().css("background-image", "url('https://s3-eu-west-1.amazonaws.com/foodsee/uploads/app_elements/check-mark.png')");
   }

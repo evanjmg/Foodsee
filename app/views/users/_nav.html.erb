@@ -3,7 +3,7 @@
 <%= link_to "My Account", my_account_path %>
 </div>
 <div class="small-4 large-4 columns my-account-link">
-<%= link_to "My Photos", my_photos_path %>
+<%= link_to "My Photos", my_photos_path(current_user) %>
 </div>
 <div class="small-4 large-4 columns my-account-link">
   <%= link_to "My Profile", user_path(current_user) %>

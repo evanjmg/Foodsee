@@ -6,7 +6,7 @@
     <div class="row">
       <div class="large-12 columns">
         <div class="row collapse">
-          <div class="small-10 columns">
+          <div class="small-12 columns">
 
             <%= form_tag(search_index_path, :method => "get") do %>
             <%= search_field_tag :search_query, params[:search_query], placeholder: "Search Photos" %>
@@ -14,9 +14,11 @@
             <%= hidden_field_tag 'lon', value = '', id: "lon"%>
 
           </div>
-          <div class="small-2 columns">
-            <%= submit_tag "Search", class: "button postfix animated pulse", id: 'search-button' %>
-
+          <div class="small-2 columns desktop-button">
+            <%= submit_tag "Search", class: "button postfix animated pulse expand", id: 'search-button'  %>
+          </div>
+          <div class="row responsive-button">
+            <%= submit_tag "Search", class: "button postfix animated pulse expand", id: 'search-button' %>
           </div>
         </div>
       </div>
