@@ -1,5 +1,6 @@
 <%= hidden_field_tag 'lat', value = @restaurant.latitude, id: "lat"%>
 <%= hidden_field_tag 'lon', value = @restaurant.longitude, id: "lon"%>
+ <script src="http://maps.googleapis.com/maps/api/js"></script>
   <script>
    var lat = document.getElementById('lat').value;
    var lon = document.getElementById('lon').value;
@@ -28,12 +29,11 @@
 
 
 
-  <h3>  <%= link_to @restaurant do %><%= @restaurant.name %><% end %></h3>
-    <h4>Categories:</h4>
+  <h3> <%= link_to @restaurant do %><%= @restaurant.name %><% end %></h3>
     <% if @restaurant.category.empty? %>
     N/A
     <% else %>
-    <ul>
+    <ul class="restaurant-categories-show">
   <% @restaurant.category.each do |category| %>
     <li class="category"><%= link_to "#" do %><%= category %><% end %></li>
   <% end %>
@@ -42,6 +42,8 @@
   <% end %>
   </ul>
   <% @restaurant.images.each do |image| %>
+  <li class="list-images">
     <%= link_to image do %><%= image_tag image.thumbnail_url %>
+  </li>
     <% end %>
   <% end %>
