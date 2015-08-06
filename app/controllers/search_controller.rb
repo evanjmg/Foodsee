@@ -2,11 +2,11 @@ class SearchController < ApplicationController
  before_action :authenticate_user!
  def new
   @images = Image.all
- end
- def recent 
-  
- end
- def index
+end
+def recent 
+
+end
+def index
   # Get Facebook data through query
   response = facebook_restaurant_search(params[:search_query], params[:lat], params[:lon], 3000)
   data = response['data']
@@ -29,7 +29,7 @@ class SearchController < ApplicationController
 
 @images = []
 if temp_restaurants != nil
- temp_restaurants[0..1].each do |restaurant|
+  temp_restaurants.each do |restaurant|
 
   instagram_place = instagram_client.location_search(restaurant.latitude, restaurant.longitude)
 
@@ -42,11 +42,12 @@ if temp_restaurants != nil
       image.tag_list = media_item.tags.to_s
       image.save
       restaurant.images << image
-    @images << image
+      @images << image
     end
   end
   restaurant.save
 end
+
 else 
   render :new, notice: "No results. Please try again."
 end
