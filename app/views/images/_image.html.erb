@@ -1,0 +1,10 @@
+
+<li class="list-images">
+<%= link_to image do %>
+<% if image.image_file.blank? %>
+<%= image_tag image.thumbnail_url %>
+<% else %>
+<%= image_tag image.image_file %>
+<% end %>
+<% end %>
+</li>

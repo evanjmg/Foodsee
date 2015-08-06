@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+get 'users/my_photos', to: 'users#my_photos', as: 'my_photos'
  get '/restaurants/selected', to: 'restaurants#selected', as: 'selected_restaurants'
  resources :restaurants
   post '/search', to: 'users#add_search_images_to_user', as: 'add_search_images_to_user'

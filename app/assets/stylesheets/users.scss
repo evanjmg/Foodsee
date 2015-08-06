@@ -1,3 +1,29 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div.my-photos-list {
+  padding-left: 15px;
+}
+div.user-nav {
+  background-color:#5980a2;
+  width:110%;
+  padding-left: 20px;
+  margin-left:-10px;
+}
+div.my-account-link {
+  a {
+    font-weight:bold;
+    color:white;
+  }
+a:hover {
+  opacity:0.6;
+}
+}
+@media screen and (max-width: 620px) {
+div.my-account-link {
+  a {
+  font-size:12px;
+  }
+
+}
+}

@@ -8,6 +8,10 @@ class UsersController < ApplicationController
   def show
     @user  = User.find(params[:id])
   end
+  def my_photos
+     @images = current_user.images.uniq 
+    
+  end
   # GET /users/:id/edit
   def edit
     # authorize! :update, @user

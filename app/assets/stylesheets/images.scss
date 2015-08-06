@@ -1,0 +1,13 @@
+li.list-images {
+  display:inline-block;
+  img {
+    width:150px;
+    height:150px;
+  }
+  background-color: #EE352A;
+}
+li.list-images:hover {
+img {
+opacity: 0.6;
+}
+}
