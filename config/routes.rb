@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 get 'users/:id/photos', to: 'users#my_photos', as: 'my_photos'
  get '/restaurants/selected', to: 'restaurants#selected', as: 'selected_restaurants'
  get '/search/recent', to: 'search#recent', as: 'recent_searches'
- get '/users/:id/restaurants', to: 'users#my_restaurants', as: 'my_restaurants'
+ get '/users/:id/restaurants', to: 'restaurants#my_restaurants', as: 'my_restaurants'
  resources :restaurants
   post '/search', to: 'users#add_search_images_to_user', as: 'add_search_images_to_user'
  resources :images

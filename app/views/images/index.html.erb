@@ -1,9 +1,12 @@
-<% @images.each do |image| %>
-  <ul>
-    <li><%= image.name %></li>
-    <li><%= image_tag image.thumbnail_url %></li>
-    <li><%= link_to 'Show', image %></li>
-    <li><%= link_to 'Edit', edit_image_path(image) %></li>
-    <li><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-  </ul>
+<ul>
+<% @images.shuffle.each do |image| %>
+
+    <li class="list-images"><%= link_to image do %><%= image_tag image.thumbnail_url %><% end %>
+
+    <% if current_user_admin? %>
+    <%= link_to 'Edit', edit_image_path(image) %>
+ <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+    <% end %>
+</li>
 <% end %>
+</ul>

@@ -7,23 +7,25 @@
 <%= link_to image_tag(@image.image_file.thumb.url), @image.image_file.url %>
 </p>
 <div class="row">
-  <div class="small-6 small-centered centering-show-image columns">
-    <%= image_tag @image.url, class: 'show-image' %>
+  <div class="centering-show-image columns">
+    <%= image_tag @image.url, class: 'show-image image-sized' %>
+    <% if @image.tags.any? %>
+    
   </div>
 </div>
-<% if @image.tags.any? %>
-<div class="row hashtags-show-image">
+<div class="row hashtags-show-image coloring">
   <% @image.tags.each do |tag| %>
   #<%= link_to tag.name.tr("[]",""),  tag_images_path(tag.name) %>
   <% end %>
   <% end %>
 </div>
+
 <p class="show-page-buttons">
   <div class="row">
     <% if  @image.users.include?(current_user) %>
     <div class="small-4 columns">
       <button class="but">
-        <%= link_to "Restaurant", restaurant_path(@image.restaurant), class: "show-page-button" %></button>
+        <%= link_to "Restaurant", restaurant_path(@image.restaurant), class: "show-page-button", id:"adjusted-button" %></button>
       </div>
       <div class="small-4 columns">
         <button class="but">
@@ -42,4 +44,5 @@
         </div>
         <% end %>
       </div>
-    </p>
+      <% end %>
+</p>

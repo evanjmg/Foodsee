@@ -10,12 +10,10 @@ li.category {
     color:darkgrey;
   }
 }
-
-@media screen and (max-width: 640px) {
-  
-  .responsive-categories {
-    display:none;
-  }
+#googleMap {
+  width:200px;
+  height:200px;
+  float:right;
 }
 .restaurant div {
   padding-bottom: 20px;
@@ -23,4 +21,18 @@ li.category {
 ul.restaurant-categories-show {
 margin:auto;
 margin-bottom: 20px;
+}
+
+@media screen and (max-width: 600px) {
+ div.agm_google_maps {
+  display:none;
+ }
+  #googleMap {
+display:none;
+
+  }
+
+  .responsive-categories {
+    display:none;
+  }
 }

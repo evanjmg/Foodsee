@@ -1,7 +1,14 @@
 class RestaurantsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_restaurants, only: [:show, :destroy]
-  
+  before_action :set_restaurants, only: [:show, :destroy, :my_restaurants]
+  def my_restaurants
+
+    restaurants = []
+    current_user.images.each do |image|
+      restaurants << image.restaurant
+    end
+    @restaurants = restaurants.uniq
+  end
   def selected
     @images = []
     image_ids = params[:image_ids]
@@ -26,7 +33,7 @@ class RestaurantsController < ApplicationController
  def destroy
    @restaurant.destroy
    respond_to do |format|
-     format.html { redirect_to workouts_url, notice: 'Workout was successfully destroyed.' }
+     format.html { redirect_to my_restaurants_path, notice: 'Workout was successfully destroyed.' }
      format.json { head :no_content }
    end
  end

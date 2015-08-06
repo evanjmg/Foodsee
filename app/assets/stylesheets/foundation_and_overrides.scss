@@ -925,12 +925,12 @@ $orbit-nav-arrow-color: #EE352A;
 // $orbit-nav-arrow-color-hover: $white;
 
 // We use these to control the timer styles
-// $orbit-timer-bg: rgba(255,255,255,0.3);
+$orbit-timer-bg: white;
 $orbit-timer-show-progress-bar: false;
 
 // We use these to control the bullet nav styles
 $orbit-bullet-nav-color: white;
-// $orbit-bullet-nav-color-active: $aluminum;
+$orbit-bullet-nav-color-active: white;
 // $orbit-bullet-radius: rem-calc(9);
 
 // We use these to controls the style of slide numbers

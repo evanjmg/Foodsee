@@ -5,10 +5,10 @@ class ImagesController < ApplicationController
   def tag
     @tag = params[:tag]
     if @tag.present? 
-      @images = Image.tagged_with(params[:tag])
+      @images = Image.tagged_with(params[:tag]).uniq
       
     else 
-      @images = Image.all
+      @images = Image.all.uniq
     end  
   end
 
@@ -20,7 +20,8 @@ class ImagesController < ApplicationController
   end
   def show
   end
-
+  def edit
+  end
   def create
     @image = Image.new(image_params)
 

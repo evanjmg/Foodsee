@@ -1,2 +1,9 @@
 <h2>My Account</h2>
 <%= render 'nav' %>
+<p>
+  </p>
+  <div class="my-account-buttons">
+<%= link_to "Update Account",  edit_user_registration_path(current_user), class: 'button expand' %>
+<%= mail_to("evanjmg@gmail.com", "Get Help", class: "button expand")%>
+<%= mail_to("evanjmg@gmail.com", "Get Involved", class: "button expand") %>
+</div>

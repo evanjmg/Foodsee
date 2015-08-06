@@ -8,7 +8,12 @@ div.fixed {
   margin-bottom: 200px;
   position:fixed;
 }
-
+.nav-button:hover {
+  background-color:#4B769A;
+  border-radius:5px;
+  height:100%;
+  padding-bottom:10px;
+}
 div.logo-nav {
   width:180px;
 }

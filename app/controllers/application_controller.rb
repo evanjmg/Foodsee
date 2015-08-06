@@ -4,7 +4,18 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :instagram_client
   helper_method :facebook_restaurant_search
+  helper_method :current_user_admin?
+  helper_method :require_admin
  
+ def current_user_admin?
+    current_user.admin?
+ end
+
+ def require_admin
+   unless current_user.admin?
+     redirect_to root_url, alert: "Unauthorized access"
+   end
+ end
   def facebook_restaurant_search(search_query,lat,long,distance)
    puts url = URI.escape("https://graph.facebook.com/v2.4/search?q=#{search_query}&type=place&center=#{lat},#{long}&distance=#{distance}&access_token=#{ENV['FACEBOOK_API_KEY']}|#{ENV['FACEBOOK_API_SECRET']}")
       HTTParty.get(url)

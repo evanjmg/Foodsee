@@ -1,1 +1,13 @@
-<%= @user.email %> - showing user
+<%= render 'nav' %>
+<br/>
+<p></p>
+<h2><%= @user.name %></h2> 
+  <h4><i>Username: <%= @user.username %></i></h4>
+<h4></h4>
+
+<h4> Photos:</h4>
+<%= render @user.images %>
+<h4>Restaurants:</h4>
+<% @user.images do |image| %>
+<li><%= link_to image.restaurant do %><%= image.restaurant %><% end %></li>
+<% end %>

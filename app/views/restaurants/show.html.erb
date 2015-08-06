@@ -27,23 +27,29 @@
    google.maps.event.addDomListener(window, 'load', initialize);
   </script>
 
-
-
+<div class="row" style="margin-bottom:30px;">
+  <div id="googleMap" class="row" clas="googleMap"></div>
+  <div class="padding:20px;margin:20px;width:300px;display:block;">
   <h3> <%= link_to @restaurant do %><%= @restaurant.name %><% end %></h3>
     <% if @restaurant.category.empty? %>
-    N/A
     <% else %>
     <ul class="restaurant-categories-show">
   <% @restaurant.category.each do |category| %>
     <li class="category"><%= link_to "#" do %><%= category %><% end %></li>
   <% end %>
-  <div id="googleMap" style="width:200px;height:200px;"></div>
-
-  <% end %>
   </ul>
+  <p>
+  <%= @restaurant.address %>
+  </p>
+  <% end %>
+  </div>
+  </div>
+  <div id="googleMap" class="row" class="responsive"></div>
+  <div class="row">
   <% @restaurant.images.each do |image| %>
   <li class="list-images">
     <%= link_to image do %><%= image_tag image.thumbnail_url %>
   </li>
     <% end %>
   <% end %>
+  </div>
