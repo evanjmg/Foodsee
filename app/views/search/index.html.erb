@@ -15,15 +15,18 @@
 <div id="search-api-results">
 <%= form_for(add_search_images_to_user_path) do |f| %>
 <div class="row">
+<div class="small-3 large-2 columns">
+  <div id="counter"></div>Photos Selected
+</div>
 <div class="small-4 large-7 columns">
 </div>
-<div class="small-3 large-2 columns">
-  <div id="counter"></div>
-</div>
+
 <div class="small-5 large-3 columns">
 <%= f.submit "Get Restaurants", id: 'submit-selection', class: "animated pulse" %>
 </div>
 </div>
+<br/>
+<div class="row">
 <%= f.collection_check_boxes(:image_ids, @images, :id, :thumbnail_url) do |b| %>
   
   <li>

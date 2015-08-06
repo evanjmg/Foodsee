@@ -1,3 +1,19 @@
+
+<div class="row">
+  <div class="small-10 columns">
+    <div class="range-slider round" data-slider data-options="display_selector: #days-off-count; initial: 10;start: 1; end: 100;">
+      <span class="range-slider-handle" role="slider" tabindex="0"></span>
+      <span class="range-slider-active-segment"></span>
+    </div>
+  </div>
+  <div class="small-2 columns">
+    <%= number_field_tag :price,"10", id: "days-off-count", min:1, max:100  %>
+    <% end %>
+
+  </div>
+</div>
+SLIDER
+****************
 position = Gecoder.coordinates(params[:address])
 
 

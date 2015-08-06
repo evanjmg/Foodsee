@@ -9,7 +9,7 @@ div.fixed {
   position:fixed;
 }
 .wrapper {
-  min-height: 100%;
+  height: 100%;
   margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
 }
 div.main-container {
@@ -87,13 +87,15 @@ a#instagram-login {
   text-align: center;
   color:white;
   background-color:  #EE352A;
+  bottom:0;
+  position:fixed;
+  width:100%;
 }
 .footer, .push {
   height: 50px; /* '.push' must be the same height as 'footer' */
 }
 .footer span {
   opacity: 0.5;
-  vertical-align: middle;
   line-height: 50px;
 }
 @media screen and (max-width: 620px) {
@@ -106,5 +108,6 @@ a#instagram-login {
   }
   #foodseelogo-lrg {
     max-width:275px;
+   
   }
 }
