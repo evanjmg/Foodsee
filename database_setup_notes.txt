@@ -1,0 +1,64 @@
+
+USER
+
+has_and_belongs_to_many :images
+lat: 
+long:
+
+*******
+add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
+
+create_table "users", force: :cascade do |t|
+  t.string   "email",                  default: "", null: false
+  t.string   "encrypted_password",     default: "", null: false
+  t.string   "reset_password_token"
+  t.datetime "reset_password_sent_at"
+  t.datetime "remember_created_at"
+  t.integer  "sign_in_count",          default: 0,  null: false
+  t.datetime "current_sign_in_at"
+  t.datetime "last_sign_in_at"
+  t.inet     "current_sign_in_ip"
+  t.inet     "last_sign_in_ip"
+  t.datetime "created_at",                          null: false
+  t.datetime "updated_at",                          null: false
+  t.string   "provider"
+  t.string   "uid"
+  t.string   "name"
+  t.string   "username"
+  t.string   "confirmation_token"
+  t.datetime "confirmed_at"
+  t.datetime "confirmation_sent_at"
+  t.string   "unconfirmed_email"
+
+IMAGE
+has_and_belongs_to_many :users
+belongs_to :restaurant
+url: 
+<!-- tags: array  -->
+collection_id:
+lat:
+long:
+restaurant_id
+
+
+RESTAURANT 
+has_many :images
+
+lat: float (→   The complete address for the restaurant string
+    → locality  Locality in which the restaurant is located string
+
+    → latitude  Latitude of the restaurant if available double
+    → longitude Longitude of the restaurant if available    double)
+long:float - 
+address (GOOGLE - formatted_address:)
+price_level:1-5 -int (GOOGLE)
+category: (GOOGLE)
+name: string (GOOGLE)
+rating: float (GOOGLE)
+
+ Average cost for two at the restaurant)
+address:
+
+
+
+
