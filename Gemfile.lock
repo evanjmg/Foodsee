@@ -39,7 +39,7 @@ GEM
       tzinfo (~> 1.1)
     acts-as-taggable-on (3.5.0)
       activerecord (>= 3.2, < 5)
-    arel (6.0.2)
+    arel (6.0.3)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -59,7 +59,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
-    color (1.4.2)
     columnize (0.9.0)
     debug_inspector (0.0.2)
     devise (3.5.1)
@@ -177,17 +176,13 @@ GEM
       railties (>= 3.1.0)
       sass (>= 3.3.0, < 3.5)
     geocoder (1.2.9)
-    globalid (0.3.5)
+    globalid (0.3.6)
       activesupport (>= 4.1.0)
     hashie (3.4.2)
     httparty (0.13.5)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
-    imagga (0.0.5)
-      color (~> 1.4.1)
-      httparty (~> 0.10)
-      json (~> 1.7)
     inflecto (0.0.2)
     instagram (1.1.5)
       faraday (>= 0.7, < 0.10)
@@ -211,13 +206,13 @@ GEM
     method_source (0.8.2)
     mime-types (2.6.1)
     mini_portile (0.6.2)
-    minitest (5.7.0)
+    minitest (5.8.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
-    net-ssh (2.10.0)
+    net-ssh (2.10.0.beta2)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     oauth2 (1.0.0)
@@ -265,6 +260,11 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.4)
+    rails_stdout_logging (0.0.3)
     railties (4.2.3)
       actionpack (= 4.2.3)
       activesupport (= 4.2.3)
@@ -325,15 +325,15 @@ DEPENDENCIES
   foundation-rails (~> 5.5.2.1)
   geocoder (~> 1.2.9)
   httparty (~> 0.13.5)
-  imagga (~> 0.0.5)
   instagram (~> 1.1.5)
   jbuilder (~> 2.0)
   jquery-rails
-  json
+  net-ssh (= 2.10.0.beta2)
   omniauth-instagram (~> 1.0.1)
   pg
   pry-rails
   rails (= 4.2.3)
+  rails_12factor
   rmagick
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
