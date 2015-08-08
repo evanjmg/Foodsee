@@ -1,24 +1,21 @@
 
-<div class="fixed">
-  <nav class="top-bar" data-topbar role="navigation">
-   <div class="row header-bg-color">
-     <div class="small-4 large-4 columns nav-button">
-
-       <%= link_to new_search_path do %><%= image_tag "https://s3-eu-west-1.amazonaws.com/foodsee/uploads/app_elements/search-small.png", id: "search-icon" %><% end %>
-     </div>
-     <div class="small-4 large-4 columns logo-nav">
 
 
 
-      <h1><a href="/"><%= image_tag "https://s3-eu-west-1.amazonaws.com/foodsee/uploads/app_elements/foodsee-small-logo.png", class: "nav-logo" %></a></h1>
-    </div>
-    <div class="small-4 large-4 columns burger nav-button">
 
-     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-     <li class="toggle-topbar hamburger-li" style=""><a href="#"><%= image_tag "https://s3-eu-west-1.amazonaws.com/foodsee/uploads/app_elements/hamburger-small.png", id:"hamburger-image" %></a></li>
+<div class="fixed contain-to-grid sticky">
+  <nav class="top-bar text-center" data-topbar role="navigation" data-options="is_hover: false">
+
+  <ul class="title-area">
+   <li class="top-bar left top-bar-left"><%= link_to new_search_path, id:'search-icon' do %><%= image_tag "https://s3-eu-west-1.amazonaws.com/foodsee/uploads/app_elements/search-small.png", id:'search-icon-image' %><% end %></li>
+      <li class="name top-bar center">
+        <a href="/" id="foodsee-logo-link"><%= image_tag "https://s3-eu-west-1.amazonaws.com/foodsee/uploads/app_elements/foodsee-small-logo.png", id: "nav-logo" %></a>
+      </li>
+ 
+      <li class="toggle-topbar right top-bar-right"><%= image_tag "https://s3-eu-west-1.amazonaws.com/foodsee/uploads/app_elements/hamburger-small.png", id:"hamburger-image" %></li>
+    </ul>
+     
      <section class="top-bar-section">
-      <!-- Right Nav Section -->
-
       <ul class="right">
         <li><%= link_to "Search", new_search_path %> </li>
         <li><%= link_to "All Restaurants", restaurants_path %> </li>

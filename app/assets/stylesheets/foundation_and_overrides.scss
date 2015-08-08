@@ -151,18 +151,18 @@ $primary-color: #EE352A;//#008CBA;
 // d. Media Query Ranges
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// $small-breakpoint:  em-calc(640);
-// $medium-breakpoint: em-calc(1024);
-// $large-breakpoint:  em-calc(1440);
-// $xlarge-breakpoint: em-calc(1920);
+$small-breakpoint:  em-calc(640);
+$medium-breakpoint: em-calc(1024);
+$large-breakpoint:  em-calc(1440);
+$xlarge-breakpoint: em-calc(1920);
 
 // $small-range:   (0, $small-breakpoint);
-// $medium-range:  ($small-breakpoint  + em-calc(1), $medium-breakpoint);
+$medium-range:  ($small-breakpoint  + em-calc(1), $medium-breakpoint);
 // $large-range:   ($medium-breakpoint + em-calc(1), $large-breakpoint);
 // $xlarge-range:  ($large-breakpoint  + em-calc(1), $xlarge-breakpoint);
 // $xxlarge-range: ($xlarge-breakpoint + em-calc(1), em-calc(99999999));
 
-// $screen: "only screen";
+$screen: "only screen";
 
 // $landscape: "#{$screen} and (orientation: landscape)";
 // $portrait: "#{$screen} and (orientation: portrait)";
@@ -1462,8 +1462,19 @@ $topbar-dropdown-label-bg:#F76B1C; //$oil;
 // Transitions and breakpoint styles
 // $topbar-transition-speed: 300ms;
 // Using rem-calc for the below breakpoint causes issues with top bar
-// $topbar-breakpoint: #{lower-bound($medium-range)}; // Change to 9999px for always mobile layout
-// $topbar-media-query: "#{$screen} and (min-width:#{lower-bound($topbar-breakpoint)})";
+$topbar-breakpoint: #{lower-bound($medium-range)}; // Change to 9999px for always mobile layout
+$topbar-media-query: "#{$screen} and (min-width:#{lower-bound($topbar-breakpoint)})";
+
+@media #{$topbar-media-query} {
+
+  nav.top-bar {
+  text-align:center;
+  }
+  section.top-bar-section {
+  display: inline-block;
+  }
+
+} 
 
 // Top-bar input styles
 // $topbar-input-height: rem-calc(28);

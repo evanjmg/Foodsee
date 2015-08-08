@@ -1,5 +1,5 @@
 * {
-margin: 0;
+  margin: 0;
 }
 html, body {
   height: 100%;
@@ -10,13 +10,10 @@ div.fixed {
 }
 .nav-button:hover {
   background-color:#4B769A;
-  border-radius:5px;
   height:100%;
-  padding-bottom:10px;
 }
-div.logo-nav {
-  width:180px;
-}
+
+
 .wrapper {
   height: 100%;
   margin: 0 auto -60px; /* the bottom margin is the negative value of the footer's height */
@@ -26,9 +23,7 @@ div.logo-nav {
 }
 div.main-container {
   padding-top:40px;
-  width:90%;
-  margin-left:auto;
-  margin-right:auto;
+  margin:20px;
 }
 input[type="submit"] {
   color:white;
@@ -37,19 +32,21 @@ input[type="submit"] {
   border-color:#EE352A;
 
 }
-
+a#foodsee-logo-link {
+  margin:10px;
+}
 h2#tagline {
-font-size: 15px;
-text-align: center;
-color:white;
-margin-bottom: 20px;
+  font-size: 15px;
+  text-align: center;
+  color:white;
+  margin-bottom: 20px;
 }
 .restaurant-title {
   display:inline-block;
 }
 .sticky{
-    position:fixed;
-    z-index:999;
+  position:fixed;
+  z-index:999;
 }
 .landing-page-container {
   margin:0;
@@ -69,10 +66,7 @@ margin-bottom: 20px;
   margin-top: 25px;
   margin-bottom: 75px;
 }
-img#restaurant-icon {
-  width:52px;
-  margin-top: 5px;
-}
+
 a#instagram-login {
   margin-left: auto;
   margin-right: auto;
@@ -103,7 +97,7 @@ a#instagram-login {
   width:100%;
 }
 .footer, .push {
-  height: 60px; /* '.push' must be the same height as 'footer' */
+  height: 3em; /* '.push' must be the same height as 'footer' */
 }
 .footer span a {
   color:white;
@@ -116,134 +110,143 @@ img#camera-button {
   padding:8px;
 }
 img#my-photos-button {
-width:60px;
-margin-top: -5px;
-
+  width:3em;
+}
+ img#restaurant-icon {
+  padding-top:0.1em;
+  width:2.7em;
 }
 
 div.header-bg-color {
   background-color:  #EE352A;
 }
-li.hamburger-li {
-  list-style: none;
-}
-div.logo-nav {
 
-}
-img#search-icon {
-display:none;
-}
+
+
 section.top-bar-section {
-  margin-top: -50px;
 }
- div.landing-page-main-container {
-width:1000px;
-margin:auto;
- }
- div.divider {
+div.landing-page-main-container {
+  width:1000px;
+  margin:auto;
+}
+div.divider {
   height:150px;
- }
- div.app-store > div.wrapper-apps {
+}
+div.app-store > div.wrapper-apps {
   display:inline-block;
   width:150px;
   float:right;
- }
- 
- div.app-store > div.wrapper-apps > div > img {
+}
+
+div.app-store > div.wrapper-apps > div > img {
   display:inline-block;
   float:none;
- }
- div.app-store > div.wrapper-apps{
+}
+div.app-store > div.wrapper-apps{
   width:400px;
- }
- .store-image {
+}
+li.name.top-bar.center {
+  overflow: auto;
+}
+.store-image {
   float:left;
   margin-top:3px;
- }
- .phone-image-container  {
+}
+.phone-image-container  {
   float:left;
- }
- .responsive-button {
+}
+.responsive-button {
   display:none;
- }
+}
+a#search-icon {
+  display:none;
+}
 @media screen and (max-width: 640px) {
+  section.top-bar-section {
+    width:100%;
+    li.title.back.js-generated {
+      a {
+        font-size: 0.8rem;
+      }
+
+        }
+        li.title.back.js-generated:hover {
+          background-color: #5980A2;
+        }
+    li {
+      border-top:1px solid rgba(255,255,255,0.4);
+    }
+  }
+
   input.submit-selection {
     display:block;
     
   }
-  .desktop-button {
-    display:none;
-  }
-  .responsive-button {
-   display:block;
-  }
-
-  div.landing-page-container {
-    float:none;
-    width:400px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  div.landing-page-main-container {
-    width:100%;
-  }
-  div.divider, div.app-store, div.phone-image-container, div.phone-image-container > div {
-    display:none;
-    float:none;
-  }
-
-  img#restaurant-icon {
-    width:50px;
-    margin-top: 0px;
-  }
-  f-topbar-fixed .top-bar-section .dropdown li a {
-    background: #EE352A;
-  }
-  div.logo-nav {
-    width:33%;
-    margin-left:-10%;
-  }
-  img#search-icon {
-    display:inline-block;
-    margin-bottom: 0px;
-    margin-left:20%;
-  }
-  img.nav-logo {
-    width: 100px;
-    margin-bottom: 10px;
-    margin-left:50px;
-  }
-
- div.logo-nav {
-   width:180px;
- }
-  img#my-photos-button {
-  width:55px;
-  margin-top: -5px;
-
+  img#search-icon-image {
+    width:1.75em;
   }
   img#hamburger-image {
-   margin-right:2.7em;
+    margin-top: 0.3em;
+    width:2.6em;
   }
-  div.burger {
-    position:absolute;
-    top:0;
-    right:0;
-    margin:10px;
-    
-    margin:0 0% 0px 0;
-  }
- .wrapper {
-   height: 100%;
-   margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
+  a#search-icon {
+   display:block;
+   margin-left:auto;
+   margin-right: auto;
  }
- 
-  .footer, .push {
-    height: 53px; /* '.push' must be the same height as 'footer' */
+ li.top-bar-right {
+  width:33%;
+
+  }
+}
+li.name {
+  width:33%;
+}
+li.top-bar-left {
+  width:33%;
+}
+.desktop-button {
+  display:none;
+}
+.responsive-button {
+ display:block;
+}
+
+div.landing-page-container {
+  float:none;
+  max-width:400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+div.landing-page-main-container {
+  width:100%;
+}
+div.divider, div.app-store, div.phone-image-container, div.phone-image-container > div {
+  display:none;
+  float:none;
+}
+
+
+
+img#my-photos-button {
+  width:3em;
+  margin-top:-0.3em;
+}
+
+
+.wrapper {
+ height: 100%;
+   margin: 0 auto -2.5em; /* the bottom margin is the negative value of the footer's height */
+ }
+  img#restaurant-icon {
+   padding-top:0.1em;
+   width:2.5em;
+ }
+.footer, .push {
+    height: 2.5em; /* '.push' must be the same height as 'footer' */
   }
   img#camera-button {
-    width:70px;
-    padding:5px;
+    width:4em;
   }
   a#instagram-login {
     padding:10px;
@@ -255,6 +258,7 @@ margin:auto;
   }
   #foodseelogo-lrg {
     max-width:275px;
-   
+
   }
 }
+

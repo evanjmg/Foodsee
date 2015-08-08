@@ -10,7 +10,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'jquery-rails'
 gem 'turbolinks'
-
+gem "activerecord-postgresql-adapter"
 gem 'jbuilder', '~> 2.0'
 gem 'foundation-rails', '~> 5.5.2.1'
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -34,8 +34,4 @@ group :development, :test do
 end
  group :production do 
   gem 'rails_12factor'
- end
- group :production do
-   gem 'pg'
-   gem "activerecord-postgresql-adapter"
  end

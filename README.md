@@ -7,6 +7,8 @@ Foodsee allows locals to find gorgeous food photos and their restaurants. Users 
 
 ![Foodsee](https://s3-eu-west-1.amazonaws.com/foodsee/uploads/app_elements/foodsee-iphone-sample.png)
 
+Link available soon. 
+
 ##Build:
 
  - UI: JQuery, JavaScript, HTML5, CSS3
@@ -19,4 +21,9 @@ Foodsee allows locals to find gorgeous food photos and their restaurants. Users 
 - Data Management: Restructure database and make search more efficient
 - Add filtering
 - Add Ransack search and types of searches
+
+##Struggles:
+- Building the algorithm
+- Setting up a slim database. 
+- Writing Good Mobile First CSS
  
