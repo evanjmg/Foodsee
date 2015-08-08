@@ -2,6 +2,11 @@ class SearchController < ApplicationController
  before_action :authenticate_user!
  def new
   @images = Image.all
+  restaurants = []
+  @images.each do |image| 
+    restaurants << image.restaurant
+  end
+    @restaurants = restaurants.uniq
 end
 def recent 
 

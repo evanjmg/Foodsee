@@ -6,7 +6,7 @@
     <div class="row">
       <div class="large-12 columns">
         <div class="row collapse">
-          <div class="small-12 columns">
+          <div class="small-12 medium-8 large-8 columns">
 
             <%= form_tag(search_index_path, :method => "get") do %>
             <%= search_field_tag :search_query, params[:search_query], placeholder: "Search Photos" %>
@@ -14,8 +14,13 @@
             <%= hidden_field_tag 'lon', value = '', id: "lon"%>
 
           </div>
-          <div class="row ">
-            <%= submit_tag "Search", class: "button postfix expand", id: 'search-button' %>
+          <div class="small-4 columns ">
+            <%= submit_tag "Search", class: "button postfix", id: 'search-button', class: 'desktop-button' %>
+          </div>
+        </div>
+            <div class="row responsive">
+              <%= submit_tag "Search", class: "button postfix expand responsive-button"  %>
+            </div>
           </div>
         </div>
       </div>
@@ -23,35 +28,9 @@
 
     <% end %>
 
-    <div class="row slider-margin fadeIn Animated">
-  <% if !@images.empty? && current_user.images.empty? %>
-      <ul class="example-orbit" data-orbit data-options="timer_speed: 3000;animation: 'fade';">
-  <% counter = 1 %>
 
-          <% @images.shuffle[0..10].each do |image|  %>
-          <li>
-  <div class="orbit-caption hashtags-show-image slider-caption" >
-   <div class="row">
-  <%= link_to restaurant_path(image.restaurant) do %> <%= image.restaurant.name %><% end %>
-    <div class="row hashtags-show-image">
-    <% if image.tags.any? %>
-      <% image.tags[0..6].each do |tag| %>
-      <% if !tag.name.blank? %>
-      #<%= link_to tag.name.tr("[]",""),  tag_images_path(tag.name), class: "tags-slider" %>
-      <% end %>
-      <% end %>
-      <% end %>
-  </div>
-          <%= link_to image do %><%= image_tag image.url, alt: "slide #{counter}",class: "slider-image" %><% end %>
-          <% counter += 1 %>
-         
-          </li>
-       <% end %>
-   
-        </ul>
-        <% end %>
-      </div>
-        <div class="row slider-margin">
+    
+        <div class="small-12 large-7 medium-12 columns  slider-size fadeIn Animated">
       <% if !@images.empty? %>
           <ul class="example-orbit" data-orbit data-options="timer_speed: 3000;animation: 'fade';">
       <% counter = 1 %>
@@ -59,14 +38,14 @@
               <% current_user.images.shuffle[0..10].each do |image|  %>
               <li>
       
-              <%= link_to image do %><%= image_tag image.url, alt: "slide #{counter}",style: "margin-left:auto;margin-right:auto; width:400px;" %><% end %>
+              <%= link_to image do %><%= image_tag image.url, alt: "slide #{counter}", class: "slider-image" %><% end %>
               <% counter += 1 %>
-              <div class="orbit-caption hashtags-show-image slider-caption" style="border-radius:5px;" >
+              <div class="orbit-caption hashtags-show-image slider-caption text-center"  >
                <div class="row">
               <%= link_to restaurant_path(image.restaurant) do %> <%= image.restaurant.name %><% end %>
-                <div class="row hashtags-show-image">
+                <div class="row hashtags-show-image text-centered">
                 <% if image.tags.any? %>
-                  <% image.tags[0..6].each do |tag| %>
+                  <% image.tags[0..5].each do |tag| %>
                   <% if !tag.name.blank? %>
                   #<%= link_to tag.name.tr("[]",""),  tag_images_path(tag.name), class: "tags-slider" %>
                   <% end %>
@@ -78,9 +57,19 @@
        
             </ul>
             <% end %>
-          </div>
-        </div>
-      </div>
+    </div>
+  <div class="search-restaurants-container large-5 small-12 medium-12">
+  <div class="search-restaurants">
+  <div class="row">
+    <div class="large-8 columns recent-restaurants"><h3>Recent Restaurants</h3></div>
+    <div class="large-4 columns"><%= link_to "See More >>", restaurants_path %></div>
+  </div>
+    
+  <%= render @restaurants.shuffle[0] %>
+
+  </div>
+  </div>
+  </div>
       <div class='load-message'>Please wait a minute. <br/>While we search for your photos.</div>
       <script>
         if (navigator.geolocation) {

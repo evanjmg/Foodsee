@@ -1,4 +1,4 @@
-
+<div class="row">
 <div class="row">
   <div class="small-8 large-4 columns">
     <h3 class="restaurant-title"> <%= link_to restaurant do %><%= restaurant.name %><% end %></h3>
@@ -24,7 +24,7 @@
   </div>
 </div>
  <div class="row">
-<% restaurant.images.each do |image| %>
+<% restaurant.images[0..3].each do |image| %>
 <li class="list-images">
 <%= link_to image do %><%= image_tag image.thumbnail_url %>
 </li>
