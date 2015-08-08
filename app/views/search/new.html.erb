@@ -30,21 +30,21 @@
 
           <% @images.shuffle[0..10].each do |image|  %>
           <li>
-  
-          <%= link_to image do %><%= image_tag image.url, alt: "slide #{counter}",style: "margin-left:auto;margin-right:auto; width:400px;" %><% end %>
+  <div class="orbit-caption hashtags-show-image slider-caption" >
+   <div class="row">
+  <%= link_to restaurant_path(image.restaurant) do %> <%= image.restaurant.name %><% end %>
+    <div class="row hashtags-show-image">
+    <% if image.tags.any? %>
+      <% image.tags[0..6].each do |tag| %>
+      <% if !tag.name.blank? %>
+      #<%= link_to tag.name.tr("[]",""),  tag_images_path(tag.name), class: "tags-slider" %>
+      <% end %>
+      <% end %>
+      <% end %>
+  </div>
+          <%= link_to image do %><%= image_tag image.url, alt: "slide #{counter}",class: "slider-image" %><% end %>
           <% counter += 1 %>
-          <div class="orbit-caption hashtags-show-image slider-caption" style="border-radius:5px;" >
-           <div class="row">
-          <%= link_to restaurant_path(image.restaurant) do %> <%= image.restaurant.name %><% end %>
-            <div class="row hashtags-show-image">
-            <% if image.tags.any? %>
-              <% image.tags[0..6].each do |tag| %>
-              <% if !tag.name.blank? %>
-              #<%= link_to tag.name.tr("[]",""),  tag_images_path(tag.name), class: "tags-slider" %>
-              <% end %>
-              <% end %>
-              <% end %>
-          </div>
+         
           </li>
        <% end %>
    

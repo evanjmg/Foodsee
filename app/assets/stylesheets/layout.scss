@@ -13,7 +13,6 @@ div.fixed {
   height:100%;
 }
 
-
 .wrapper {
   height: 100%;
   margin: 0 auto -60px; /* the bottom margin is the negative value of the footer's height */
@@ -22,8 +21,7 @@ div.fixed {
   width:150px;
 }
 div.main-container {
-  padding-top:40px;
-  margin:20px;
+  margin:1em;
 }
 input[type="submit"] {
   color:white;
@@ -162,6 +160,10 @@ a#search-icon {
   display:none;
 }
 @media screen and (max-width: 640px) {
+  img.nav-logo {
+    max-width:80%;
+  }
+
   section.top-bar-section {
     width:100%;
     li.title.back.js-generated {
@@ -196,11 +198,13 @@ a#search-icon {
  }
  li.top-bar-right {
   width:33%;
+  
 
   }
 
 li.name {
   width:33%;
+  padding-right:10px;
 }
 li.top-bar-left {
   width:33%;

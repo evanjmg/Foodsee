@@ -11,7 +11,6 @@ def index
   response = facebook_restaurant_search(params[:search_query], params[:lat], params[:lon], 3000)
   data = response['data']
   temp_restaurants = []
-
   # Create restaurants from Facebook Places data
   data.each do |restaurant|
     categories = []

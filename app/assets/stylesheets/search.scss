@@ -18,9 +18,12 @@
 }
 .slider-margin {
 }
+img.slider-image { margin-left:auto;margin-right:auto; max-width:600px;overflow:hidden;}
 .slider-caption {
+  
   a {
-    color:white;
+    color:#EE352A;
+    font-weight:bold;
     font-size:16px;
   }
   a:hover {
@@ -38,8 +41,21 @@
     margin-left:4%;
   }
 }
-.hashtags-show-image a.tags-slider { 
-color: white;}
+.hashtags-show-image { 
+a.tags-slider { 
+ color:black;
+font-size:12px;
+font-weight:normal;
+
+ ;}
+}
+.orbit-caption.hashtags-show-image.slider-caption {
+  border:1px solid #e3e3e3;
+  border-bottom-radius: 4px;
+  left:0;
+  right:0;
+  margin-bottom: -4px;
+}
 input#submit-selection {
   background-color:#EE352A;
   color:white;
