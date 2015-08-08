@@ -1,17 +1,22 @@
 class SearchController < ApplicationController
  before_action :authenticate_user!
+ after_filter "save_my_previous_url", only: [:new]
  def new
-  @images = Image.all
-  restaurants = []
-  @images.each do |image| 
-    restaurants << image.restaurant
-  end
+  if !Image.all.empty?
+    @images = Image.all
+    restaurants = []
+    @images.each do |image| 
+      restaurants << image.restaurant
+    end
     @restaurants = restaurants.uniq
+  end
 end
-def recent 
 
-end
-def index
+
+  def recent 
+
+  end
+  def index
   # Get Facebook data through query
   response = facebook_restaurant_search(params[:search_query], params[:lat], params[:lon], 3000)
   data = response['data']
@@ -35,26 +40,32 @@ def index
 if temp_restaurants != nil
   temp_restaurants.each do |restaurant|
 
-  instagram_place = instagram_client.location_search(restaurant.latitude, restaurant.longitude)
+    instagram_place = instagram_client.location_search(restaurant.latitude, restaurant.longitude)
 
-  restaurant.instagram = instagram_place[0].id.to_s 
-  
-  for media_item in instagram_client.location_recent_media(restaurant.instagram)
+    restaurant.instagram = instagram_place[0].id.to_s 
 
-    if media_item != nil
-      image = Image.new(url: media_item.images.standard_resolution.url, thumbnail_url: media_item.images.thumbnail.url)
-      image.tag_list = media_item.tags.to_s
-      image.save
-      restaurant.images << image
-      @images << image
+    for media_item in instagram_client.location_recent_media(restaurant.instagram)
+
+      if media_item != nil
+        image = Image.new(url: media_item.images.standard_resolution.url, thumbnail_url: media_item.images.thumbnail.url)
+        image.tag_list = media_item.tags.to_s
+        image.save
+        restaurant.images << image
+        @images << image
+      end
     end
+    restaurant.save
   end
-  restaurant.save
-end
 
 else 
   render :new, notice: "No results. Please try again."
 end
+
 end
 
+def save_my_previous_url
+   # session[:previous_url] is a Rails built-in variable to save last url.
+   session[:my_previous_url] = URI(request.referer || '').path
+
+ end
 end

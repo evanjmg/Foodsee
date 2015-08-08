@@ -48,9 +48,10 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         @user.skip_reconfirmation!
         sign_in(@user, :bypass => true)
-        redirect_to new_search_path, notice: 'Your profile was successfully updated.'
+        redirect_to new_search_path, notice: 'Welcome! Search to begin your food discovery!'
       else
-        @show_errors = true
+        @show_errors = false
+        redirect_to new_search_path, notice: 'Welcome! Search to begin your food discovery!'
       end
     end
   end

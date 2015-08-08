@@ -18,77 +18,80 @@
             <%= submit_tag "Search", class: "button postfix", id: 'search-button', class: 'desktop-button' %>
           </div>
         </div>
-            <div class="row responsive">
-              <%= submit_tag "Search", class: "button postfix expand responsive-button"  %>
-            </div>
-          </div>
+        <div class="row responsive">
+          <%= submit_tag "Search", class: "button postfix expand responsive-button"  %>
         </div>
       </div>
     </div>
+  </div>
 
-    <% end %>
+
+  <% end %>
 
 
-    
-        <div class="small-12 large-7 medium-12 columns  slider-size fadeIn Animated">
-      <% if !@images.empty? %>
-          <ul class="example-orbit" data-orbit data-options="timer_speed: 3000;animation: 'fade';">
-      <% counter = 1 %>
+  <div class="row search-landing-content-container">
+    <div class="small-12 large-7 medium-12 columns  slider-size fadeIn Animated">
+      <% if @images != nil %>
+      <ul class="example-orbit" data-orbit data-options="timer_speed: 3000;animation: 'fade';">
+        <% counter = 1 %>
 
-              <% current_user.images.shuffle[0..10].each do |image|  %>
-              <li>
-      
-              <%= link_to image do %><%= image_tag image.url, alt: "slide #{counter}", class: "slider-image" %><% end %>
-              <% counter += 1 %>
-              <div class="orbit-caption hashtags-show-image slider-caption text-center"  >
-               <div class="row">
-              <%= link_to restaurant_path(image.restaurant) do %> <%= image.restaurant.name %><% end %>
-                <div class="row hashtags-show-image text-centered">
-                <% if image.tags.any? %>
-                  <% image.tags[0..5].each do |tag| %>
-                  <% if !tag.name.blank? %>
-                  #<%= link_to tag.name.tr("[]",""),  tag_images_path(tag.name), class: "tags-slider" %>
-                  <% end %>
-                  <% end %>
-                  <% end %>
-              </div>
-              </li>
-           <% end %>
-       
-            </ul>
-            <% end %>
+        <% current_user.images.shuffle[0..10].each do |image|  %>
+        <li>
+
+          <%= link_to image do %><%= image_tag image.url, alt: "slide #{counter}", class: "slider-image" %><% end %>
+          <% counter += 1 %>
+          <div class="orbit-caption hashtags-show-image slider-caption text-center"  >
+           <div class="row">
+            <%= link_to restaurant_path(image.restaurant) do %> <%= image.restaurant.name %><% end %>
+            <div class="row hashtags-show-image text-centered">
+              <% if image.tags.any? %>
+              <% image.tags[0..5].each do |tag| %>
+              <% if !tag.name.blank? %>
+              #<%= link_to tag.name.tr("[]",""),  tag_images_path(tag.name), class: "tags-slider" %>
+              <% end %>
+              <% end %>
+              <% end %>
+            </div>
+          </li>
+          <% end %>
+
+        </ul>
+        <% end %>
+      </div>
+      <% if @restaurants != nil %>
+      <div class="search-restaurants-container large-5 small-12 medium-12">
+        <div class="search-restaurants">
+          <div class="row">
+            <div class="large-8 columns recent-restaurants"><h3>Recent Restaurants</h3></div>
+            <div class="large-4 columns"><%= link_to "See More >>", restaurants_path %></div>
+          </div>
+            
+          <%= render @restaurants.shuffle[0] %>
+
+        </div>
+      </div>
+        <% end %>
     </div>
-  <div class="search-restaurants-container large-5 small-12 medium-12">
-  <div class="search-restaurants">
-  <div class="row">
-    <div class="large-8 columns recent-restaurants"><h3>Recent Restaurants</h3></div>
-    <div class="large-4 columns"><%= link_to "See More >>", restaurants_path %></div>
   </div>
-    
-  <%= render @restaurants.shuffle[0] %>
-
-  </div>
-  </div>
-  </div>
-      <div class='load-message'>Please wait a minute. <br/>While we search for your photos.</div>
-      <script>
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(GeoL);
-          if (document.getElementById('lat') === null) {
-           OtherThanGeo(); 
-         }
-       }
-       else {
-        OtherThanGeo();
-      }
-      function OtherThanGeo () {
-       $('input#search_query').html("Geolocation is not supported by this browser. Please Provide your address.");
-       form = document.createElement("input");
-       form.attr({ name: "address", id: "address", title: "Address", placeholder: "Type Address"});
-       document.getElementsByTagName('form')[0].appendChild(form)
+  <div class='load-message'>Please wait a minute. <br/>While we search for your photos.</div>
+  <script>
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(GeoL);
+      if (document.getElementById('lat') === null) {
+       OtherThanGeo(); 
      }
-     function GeoL(position) {
-      document.getElementById('lat').value = position.coords.latitude;
-      document.getElementById('lon').value = position.coords.longitude;
-    }
-  </script>
+   }
+   else {
+    OtherThanGeo();
+  }
+  function OtherThanGeo () {
+   $('input#search_query').html("Geolocation is not supported by this browser. Please Provide your address.");
+   form = document.createElement("input");
+   form.attr({ name: "address", id: "address", title: "Address", placeholder: "Type Address"});
+   document.getElementsByTagName('form')[0].appendChild(form)
+ }
+ function GeoL(position) {
+  document.getElementById('lat').value = position.coords.latitude;
+  document.getElementById('lon').value = position.coords.longitude;
+}
+</script>

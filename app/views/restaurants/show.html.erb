@@ -3,7 +3,7 @@
 
 
 <div class="row" style="margin-bottom:30px;">
-  <div id="googleMap" class="row" clas="googleMap"></div>
+  <div id="googleMap" class="row googleMap"></div>
   <div class="padding:20px;margin:20px;width:300px;display:block;">
     <h3> <%= link_to @restaurant do %><%= @restaurant.name %><% end %></h3>
     <% if @restaurant.category.empty? %>
@@ -26,7 +26,6 @@
   </div>
   
 </div>
-<div id="googleMap"></div>
 <div class="row">
   <% @restaurant.images.each do |image| %>
   <li class="list-images">

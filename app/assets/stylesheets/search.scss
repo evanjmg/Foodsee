@@ -8,6 +8,9 @@
   padding:0;
   width:150px;
 }
+.search-landing-content-container {
+  max-width:1100px;
+}
 .load-message {
   display:none;
 }
@@ -55,9 +58,11 @@ margin-right: auto; }
   margin-top: 3px;
   line-height: inherit;
 }
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1000px) {
   div.slider-size {
-   float:none
+   float:none;
+   margin-left: auto;
+   margin-right: auto;
   }
   .search-restaurants-container {display:none;}
 }
