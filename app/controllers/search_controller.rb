@@ -13,23 +13,24 @@ class SearchController < ApplicationController
 end
 
 
-  def recent 
+def recent 
 
-  end
-  def index
-    lat = params[:lat]
-    lon = params[:lon]
+end
+def index
+  lat = params[:lat]
+  lon = params[:lon]
    # Geocode location query if present
-  if params[:location] != ""
-   coordinates = Geocoder.coordinates(params[:location])
-   lat = coordinates[0]
-   lon = coordinates[1]
-  end
+   if params[:location] != nil
+     coordinates = Geocoder.coordinates(params[:location])
+     lat = coordinates[0]
+     lon = coordinates[1]
+ 
+   end
   # Get Facebook data through query
   if !(lat.blank? && lon.blank?)
-  response = facebook_restaurant_search(params[:search_query],lat,lon , 3000)
-  data = response['data']
-  temp_restaurants = []
+    response = facebook_restaurant_search(params[:search_query],lat,lon , 3000)
+    data = response['data']
+    temp_restaurants = []
   # Create restaurants from Facebook Places data
   data.each do |restaurant|
     categories = []
@@ -48,32 +49,33 @@ end
 @images = []
 if temp_restaurants != nil
   temp_restaurants.each do |restaurant|
-binding.pry
-    instagram_place = instagram_client.location_search(restaurant.latitude, restaurant.longitude)
+    if restaurant.latitude && restaurant.longitude != nil
+      instagram_place = instagram_client.location_search(restaurant.latitude, restaurant.longitude)
 
-    restaurant.instagram = instagram_place[0].id.to_s 
+      restaurant.instagram = instagram_place[0].id.to_s 
 
-    for media_item in instagram_client.location_recent_media(restaurant.instagram)
+      for media_item in instagram_client.location_recent_media(restaurant.instagram)
 
-      if media_item != nil
-        image = Image.new(url: media_item.images.standard_resolution.url, thumbnail_url: media_item.images.thumbnail.url)
-        image.tag_list = media_item.tags.to_s
-        image.save
-        restaurant.images << image
-        @images << image
+        if media_item != nil
+          image = Image.new(url: media_item.images.standard_resolution.url, thumbnail_url: media_item.images.thumbnail.url)
+          image.tag_list = media_item.tags.to_s
+          image.save
+          restaurant.images << image
+          @images << image
+        end
       end
+      restaurant.save
     end
-    restaurant.save
   end
-
 else 
-  render :new, notice: "No results. Please try again."
+  render :new, alert: "No results. Please try again."
 end
 else 
   redirect_to new_search_path, alert: "Please make sure location services is on. You may provide your location below. "
 end
 
 end
+private
 
 def save_my_previous_url
    # session[:previous_url] is a Rails built-in variable to save last url.

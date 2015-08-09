@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       @images << Image.find_by(id: image_id)
       current_user.images << @images
     end
-      redirect_to selected_restaurants_path(:image_ids => @images), notice: "Here are the restaurants and their images."
+      redirect_to selected_restaurants_path(:image_ids => @images)
   end
 
   # PATCH/PUT /users/:id.:format
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         sign_in(@user == current_user ? @user : current_user, :bypass => true)
-        format.html { redirect_to root_url, notice: 'You successfully signed up with Instagram.' }
+        format.html { redirect_to root_url, alert: 'You successfully updated your information.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -48,10 +48,10 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         @user.skip_reconfirmation!
         sign_in(@user, :bypass => true)
-        redirect_to new_search_path, notice: 'Welcome! Search to begin your food discovery!'
+        redirect_to new_search_path, alert: 'Welcome! Search to begin your food discovery!'
       else
         @show_errors = false
-        redirect_to new_search_path, notice: 'Welcome! Search to begin your food discovery!'
+        redirect_to new_search_path, alert: 'Welcome! Search to begin your food discovery!'
       end
     end
   end
