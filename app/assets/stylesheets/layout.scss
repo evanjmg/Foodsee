@@ -12,7 +12,17 @@ div.fixed {
   background-color:#4B769A;
   height:100%;
 }
+a.but, button.but {
+  border-radius: 8px;
+  width:100%;
+  background-color: #5980A2;
+ color:white;
+ padding:8px;
+}
+a.but:hover, button.but:hover {
+  background-color:#EE352A;
 
+}
 .wrapper {
   height: 100%;
   margin: 0 auto -60px; /* the bottom margin is the negative value of the footer's height */
@@ -159,7 +169,19 @@ li.name.top-bar.center {
 a#search-icon {
   display:none;
 }
+a.desktop-button, button.desktop-button {
+  width:150px;
+  padding:8px;
+  color:white;
+  background-color:#5980A2;
+  border-radius:5px;
+  margin-left: auto;
+  margin-right: auto;
+}
 @media screen and (max-width: 640px) {
+  .responsive-button {
+    
+  }
   img.nav-logo {
     max-width:80%;
   }

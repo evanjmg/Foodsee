@@ -37,10 +37,11 @@
           </button>
         </div>
         <% else %>
-        <div class="small-12 small-centered columns">
-          <button class="but">
-            <%= link_to "Go to Restaurant", restaurant_path(@image.restaurant), class: "show-page-button" %>
-          </button>
+        <div class="small-12 small-centered columns text-center">
+          
+          <%= link_to "Go to Restaurant", restaurant_path(@image.restaurant), class: "show-page-button desktop-button but" %>
+            <%= link_to "Go to Restaurant", restaurant_path(@image.restaurant), class: "show-page-button responsive-button but" %>
+         
         </div>
         <% end %>
       </div>

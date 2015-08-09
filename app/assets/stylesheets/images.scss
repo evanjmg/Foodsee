@@ -12,7 +12,7 @@ li.list-images:hover {
   }
 }
 img.show-image {
-  width:500px;
+  width:400px;
 }
 div.centering-show-image {
   text-align: center;
@@ -36,14 +36,14 @@ p.show-page-buttons {
     color:#5980A2;
   }
 }
-a.show-page-button  {
-  margin-right: auto;
-  margin-left: auto;
- 
 
-  }
   .coloring {
-    background-color: #EE352A;
+    background-color: #E3E3E3;
+    margin-left: auto;
+    margin-right: auto;
+    a {
+      color:black;
+    }
 
   }
   h4.show-image {
@@ -51,16 +51,7 @@ a.show-page-button  {
     font-weight: bold;
     text-align: center;
   }
-button.but {
-  border-radius: 8px;
-  width:100%;
-  a {color:white; }
 
-}
-button.but:hover {
-  background-color:#EE352A;
-
-}
 @media screen and (max-width: 640px) { 
  img.image-sized {
   margin-left:auto;
