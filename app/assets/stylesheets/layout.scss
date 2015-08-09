@@ -178,6 +178,23 @@ a.desktop-button, button.desktop-button {
   margin-left: auto;
   margin-right: auto;
 }
+
+
+@media screen and (max-width: 1000px) {
+  #foodseelogo-lrg {
+    max-width:400px;
+  }
+  div.landing-page-main-container {
+    width:700px;
+    margin:auto;
+  }
+  div.phone-image-container img {
+    margin-top: 50px;
+    width:300px;
+  }
+  div.app-store > div.wrapper-apps { 
+    width:340px;}
+}
 @media screen and (max-width: 640px) {
   .responsive-button {
     
