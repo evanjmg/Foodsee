@@ -9,7 +9,7 @@
 <%= render @user.images.uniq %>
 <p>
 <h4>Restaurants:</h4>
-<% @user.images.uniq.each do |image| %>
-<li><%= link_to image.restaurant do %><%= image.restaurant.name %><% end %></li>
+<% @restaurants.each do |restaurant| %>
+<li><%= link_to restaurant do %><%= restaurant.name %><% end %></li>
 <% end %>
 </p>

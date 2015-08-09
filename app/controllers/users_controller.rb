@@ -8,6 +8,11 @@ class UsersController < ApplicationController
   
   def show
     @user  = User.find(params[:id])
+    restaurants = []
+    current_user.images.each do |image|
+      restaurants << image.restaurant
+    end
+    @restaurants = restaurants.uniq
   end
   def my_photos
      @images = current_user.images.uniq 
