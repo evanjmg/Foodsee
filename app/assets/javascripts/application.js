@@ -56,6 +56,7 @@ $(function(){
 if ($('div.alert-box.round.alert')[0] != undefined) {
   $('div.location-append').prepend("<div class='row'> <div class='small-12 medium-8 large-8 columns'><input type='text' id='location' placeholder='Enter Location (e.g. City, Address, Zip)' class='expand' name='location' style='visibility:visible'></div></div>") };
 $('input#search-button').on('click', function () {
+  $('div.new-search-content').empty();
   $('div.new-search-content').addClass('animated fadeIn whirly-loader');
   $('div.load-message').fadeIn("slow");
 });
