@@ -30,9 +30,11 @@
     <% end %>
 
     <% if @images != nil %>
+
     <div class="row search-landing-content-container">
       <div class="small-12 large-7 medium-12 columns  slider-size fadeIn Animated">
-       
+       <% if current_user.images != [] %>
+   
         <ul class="example-orbit" data-orbit data-options="timer_speed: 3000;animation: 'fade';">
           <% counter = 1 %>
 
@@ -45,7 +47,7 @@
               <%= link_to restaurant_path(image.restaurant) do %> <%= image.restaurant.name %><% end %>
 
               <div class="row hashtags-show-image text-centered">
-                <% if image.tags.any? %>
+                <% if image.tags[0].name != "[]" %>
                 <% image.tags[0..5].each do |tag| %>
                 <% if !tag.name.blank? %>
                 #<%= link_to tag.name.tr("[]",""),  tag_images_path(tag.name), class: "tags-slider" %>
@@ -54,13 +56,36 @@
                 <% end %>
               </div>
             </div>
-
-           
-        
-
           </li>
           <% end %>
         </ul>
+        <% else %>
+
+        <ul class="example-orbit" data-orbit data-options="timer_speed: 3000;animation: 'fade';">
+          <% counter = 1 %>
+
+          <% @images.shuffle[0..10].each do |image|  %>
+          <li>
+
+            <%= link_to image do %><%= image_tag image.url, alt: "slide #{counter}", class: "slider-image" %><% end %>
+            <% counter += 1 %>
+            <div class="orbit-caption hashtags-show-image slider-caption text-center" >
+              <%= link_to restaurant_path(image.restaurant) do %> <%= image.restaurant.name %><% end %>
+
+              <div class="row hashtags-show-image text-centered">
+                <% if image.tags[0].name != "[]" %>
+                <% image.tags[0..5].each do |tag| %>
+                <% if !tag.name.blank? %>
+                #<%= link_to tag.name.tr("[]",""),  tag_images_path(tag.name), class: "tags-slider" %>
+                <% end %>
+                <% end %>
+                <% end %>
+              </div>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+      <% end %>
       
       </div>
 
