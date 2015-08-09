@@ -52,9 +52,11 @@ $(function(){
     $(this).data("clicks", !clicks);
     counter;
   });
-
+if ($('div.alert-box') != []) {
+  $('search_query').append("<input id='location' placeholder='Enter Location' class='expand' name='location'>") };
 $('input#search-button').on('click', function () {
   $('div.new-search-content').addClass('animated fadeIn whirly-loader');
   $('div.load-message').fadeIn("slow");
 });
+
   });

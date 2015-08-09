@@ -18,6 +18,7 @@ end
   end
   def index
   # Get Facebook data through query
+  if !(params[:lat].blank? && params[:lon].blank?)
   response = facebook_restaurant_search(params[:search_query], params[:lat], params[:lon], 3000)
   data = response['data']
   temp_restaurants = []
@@ -60,7 +61,9 @@ if temp_restaurants != nil
 else 
   render :new, notice: "No results. Please try again."
 end
-
+else 
+  redirect_to new_search_path, alert: "Please make sure location services is on. You may provide your location below. "
+end
 end
 
 def save_my_previous_url
