@@ -7,14 +7,15 @@ Foodsee allows locals to find gorgeous food photos and their restaurants. Users 
 
 ![Foodsee](https://s3-eu-west-1.amazonaws.com/foodsee/uploads/app_elements/foodsee-iphone-sample.png)
 
-Link available soon. 
+Test it Out: [foodseeapp.com](http://www.foodseeapp.com/)
 
 ##Build:
 
  - UI: JQuery, JavaScript, HTML5, CSS3
  - Data: Facebook and Instagram
  - Gems: Carrier Wave, Geocoder, Devise, Act-as-Taggable, Oauth-Instagram, HTTParty, 
- - Back-End: Rails, Postgresql
+ - Back-End: Rails, Postgresql, Amazon Web Services
+ - Platform: Heroku
  
 ##In Development:
 - Features: Comments, Favorites, Cuisines

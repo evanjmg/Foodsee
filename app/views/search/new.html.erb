@@ -29,10 +29,10 @@
 
     <% end %>
 
-
+    <% if @images != nil %>
     <div class="row search-landing-content-container">
       <div class="small-12 large-7 medium-12 columns  slider-size fadeIn Animated">
-        <% if @images != nil %>
+       
         <ul class="example-orbit" data-orbit data-options="timer_speed: 3000;animation: 'fade';">
           <% counter = 1 %>
 
@@ -61,7 +61,7 @@
           </li>
           <% end %>
         </ul>
-        <% end %>
+      
       </div>
 
       <% if @restaurants != nil %>
@@ -78,6 +78,7 @@
       </div>
       <% end %>
     </div>
+    <% end %>
   </div>
 </div>
 <div class='load-message'>Please wait a minute. <br/>While we search for your photos.</div>

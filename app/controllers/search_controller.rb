@@ -48,7 +48,7 @@ def index
 
 @images = []
 if temp_restaurants != nil
-  temp_restaurants.each do |restaurant|
+  temp_restaurants[0..6].each do |restaurant|
     if restaurant.latitude && restaurant.longitude != nil
       instagram_place = instagram_client.location_search(restaurant.latitude, restaurant.longitude)
 
