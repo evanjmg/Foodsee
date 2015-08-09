@@ -115,6 +115,12 @@ input#submit-selection {
 div#search-api-results form label > div.image-container {
   background-color:#EE352A;
   display: inline-block;
+  max-width:120px;
+  max-height:120px;
+}
+div#search-api-results form label > div.image-container img {
+  max-width:120px;
+  max-height:120px;
 }
 
 div#search-api-results form div.image-container:hover img {

@@ -48,6 +48,7 @@ $(function(){
       $('span#counter').html(counter);
      $(this).css('opacity', '0.5');
      $(this).parent().css("background-image", "url('https://s3-eu-west-1.amazonaws.com/foodsee/uploads/app_elements/check-mark.png')");
+     $(this).parent().css("background-size", "contain");
   }
     $(this).data("clicks", !clicks);
     counter;
