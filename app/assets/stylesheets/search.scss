@@ -7,6 +7,13 @@
   font-size: 1rem;
   padding:0;
   width:150px;
+  border-width:0;
+}
+#search-button:hover {
+  background-color: #5980A2;
+}
+.see-more {
+  line-height: 3em;
 }
 .search-landing-content-container {
   max-width:1100px;

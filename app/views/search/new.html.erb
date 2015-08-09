@@ -19,7 +19,7 @@
           </div>
         </div>
         <div class="row responsive">
-          <%= submit_tag "Search", class: "button postfix expand responsive-button"  %>
+          <%= submit_tag "Search", class: "button postfix expand responsive-button", style: "border-width:0;"  %>
         </div>
       </div>
     </div>
@@ -63,7 +63,7 @@
         <div class="search-restaurants">
           <div class="row">
             <div class="large-8 columns recent-restaurants"><h3>Recent Restaurants</h3></div>
-            <div class="large-4 columns"><%= link_to "See More >>", restaurants_path %></div>
+            <div class="large-4 columns"><%= link_to "See More >>", restaurants_path, class: 'see-more' %></div>
           </div>
             
           <%= render @restaurants.shuffle[0] %>

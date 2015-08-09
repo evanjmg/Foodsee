@@ -583,7 +583,7 @@ $button-bg-color: #5980A2;
 
 // We use these to set the color of the pip in dropdown buttons
 // $dropdown-button-pip-color: $white;
-// $dropdown-button-pip-color-alt: $oil;
+$dropdown-button-pip-color-alt: #EE352A;// $oil;
 
 // We use these to set the size of the pip in dropdown buttons
 // $button-pip-tny: rem-calc(6);
@@ -710,7 +710,7 @@ $button-bg-color: #5980A2;
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // We use these to style the icon-bar and items
-// $icon-bar-bg: $oil;
+$icon-bar-bg: #5980A2;
 // $icon-bar-font-color: $white;
 // $icon-bar-font-color-hover: $icon-bar-font-color;
 // $icon-bar-font-size: 1rem;
@@ -1437,7 +1437,7 @@ $topbar-dropdown-bg: #EE352A;//$oil;
 // $topbar-dropdown-link-color: $white;
 // $topbar-dropdown-link-color-hover: #5980A2;//$topbar-link-color-hover;
 $topbar-dropdown-link-bg:  #EE352A;//$oil;
-// $topbar-dropdown-link-bg-hover:#5980A2; //$jet;
+$topbar-dropdown-link-bg-hover:#5980A2; //$jet;
 // $topbar-dropdown-link-weight: $font-weight-normal;
 // $topbar-dropdown-toggle-size: 5px;
 // $topbar-dropdown-toggle-color: $white;
