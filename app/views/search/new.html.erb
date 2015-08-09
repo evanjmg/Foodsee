@@ -4,17 +4,18 @@
 
     <h2>Search Food</h2>
     <div class="row">
-      <div class="large-12 columns">
+    <%= form_tag(search_index_path, :method => "get") do %>
+      <div class="large-12 columns location-append">
         <div class="row collapse">
           <div class="small-12 medium-8 large-8 columns">
 
-            <%= form_tag(search_index_path, :method => "get") do %>
+            
             <%= search_field_tag :search_query, params[:search_query], placeholder: "Search Photos" %>
             <%= hidden_field_tag 'lat', value = '', id: "lat"%>
             <%= hidden_field_tag 'lon', value = '', id: "lon"%>
 
           </div>
-          <div class="small-4 columns ">
+          <div class="small-4 columns">
             <%= submit_tag "Search", class: "button postfix", id: 'search-button', class: 'desktop-button' %>
           </div>
         </div>

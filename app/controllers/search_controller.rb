@@ -17,9 +17,17 @@ end
 
   end
   def index
+    lat = params[:lat]
+    lon = params[:lon]
+   # Geocode location query if present
+  if params[:location] != ""
+   coordinates = Geocoder.coordinates(params[:location])
+   lat = coordinates[0]
+   lon = coordinates[1]
+  end
   # Get Facebook data through query
-  if !(params[:lat].blank? && params[:lon].blank?)
-  response = facebook_restaurant_search(params[:search_query], params[:lat], params[:lon], 3000)
+  if !(lat.blank? && lon.blank?)
+  response = facebook_restaurant_search(params[:search_query],lat,lon , 3000)
   data = response['data']
   temp_restaurants = []
   # Create restaurants from Facebook Places data
@@ -40,7 +48,7 @@ end
 @images = []
 if temp_restaurants != nil
   temp_restaurants.each do |restaurant|
-
+binding.pry
     instagram_place = instagram_client.location_search(restaurant.latitude, restaurant.longitude)
 
     restaurant.instagram = instagram_place[0].id.to_s 
@@ -64,6 +72,7 @@ end
 else 
   redirect_to new_search_path, alert: "Please make sure location services is on. You may provide your location below. "
 end
+
 end
 
 def save_my_previous_url

@@ -9,6 +9,9 @@
   width:150px;
   border-width:0;
 }
+#location {
+  width:102%;
+}
 #search-button:hover {
   background-color: #5980A2;
 }
@@ -74,7 +77,9 @@ margin-right: auto; }
   .search-restaurants-container {display:none;}
 }
 @media only screen and (max-width: 640px) {
-
+  #location {
+    width:100%;
+  }
   div.slider-size {
     max-width: 400px;
     max-height: 400px;
