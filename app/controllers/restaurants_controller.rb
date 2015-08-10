@@ -20,7 +20,8 @@ class RestaurantsController < ApplicationController
       restaurants <<  image.restaurant
     end 
     @restaurants = restaurants.uniq
-    # a = current.images.all - @restaurants
+    # a = current_user.images.
+           # - @restaurants
 
   end
   def show
