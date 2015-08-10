@@ -9,7 +9,7 @@
 <div class="row">
   <div class="centering-show-image columns">
     <%= image_tag @image.url, class: 'show-image image-sized' %>
-    <% if @image.tags.any? %>
+    <% if @image.tags[0].name != "[]" %>
     
   </div>
 </div>
@@ -19,8 +19,13 @@
   <% end %>
   <% end %>
 </div>
-
+<div class="row">
+<p>
+  <br/>
+  </p>
+  </div>
 <p class="show-page-buttons">
+
   <div class="row">
     <% if  @image.users.include?(current_user) %>
     <div class="small-4 columns">
@@ -38,12 +43,12 @@
         </div>
         <% else %>
         <div class="small-12 small-centered columns text-center">
-          
+
           <%= link_to "Go to Restaurant", restaurant_path(@image.restaurant), class: "show-page-button desktop-button but" %>
-            <%= link_to "Go to Restaurant", restaurant_path(@image.restaurant), class: "show-page-button responsive-button but" %>
-         
+          <%= link_to "Go to Restaurant", restaurant_path(@image.restaurant), class: "show-page-button responsive-button but" %>
+
         </div>
         <% end %>
       </div>
       <% end %>
-</p>
+    </p>

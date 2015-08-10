@@ -51,7 +51,9 @@ p.show-page-buttons {
     font-weight: bold;
     text-align: center;
   }
-
+a.show-page-button {
+  color:white;
+}
 @media screen and (max-width: 640px) { 
   li.list-images {
     img {
@@ -82,6 +84,7 @@ a.show-page-button  {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+
     
 
   }
