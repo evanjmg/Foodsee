@@ -1,6 +1,14 @@
 class RestaurantsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_restaurants, only: [:show, :destroy, :my_restaurants]
+  before_action :set_restaurants, only: [:show, :destroy, :my_restaurants, :upvote, :unvote]
+  def upvote
+    @restaurant.liked_by current_user
+    redirect_to restaurant_path(@restaurant);
+  end
+  def unvote
+    @restaurant.unliked_by current_user
+    redirect_to restaurant_path(@restaurant);
+  end
   def my_restaurants
 
     restaurants = []

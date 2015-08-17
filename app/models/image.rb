@@ -1,4 +1,5 @@
 class Image < ActiveRecord::Base
+  acts_as_votable
   belongs_to :restaurant
   belongs_to :users
   has_many :imageusers, dependent: :destroy

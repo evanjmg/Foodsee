@@ -25,6 +25,7 @@ gem 'acts-as-taggable-on', '~> 3.5.0'
 gem 'httparty', '~> 0.13.5'
 gem 'rmagick'
 gem 'net-ssh', '2.10.0.beta2'
+gem 'acts_as_votable', '~> 0.10.0'
 # gem "resque", "~> 2.0.0.pre.1"
 # gem 'mail'
 group :development, :test do

@@ -7,9 +7,19 @@ get 'users/:id/photos', to: 'users#my_photos', as: 'my_photos'
  get '/restaurants/selected', to: 'restaurants#selected', as: 'selected_restaurants'
  get '/search/recent', to: 'search#recent', as: 'recent_searches'
  get '/users/:id/restaurants', to: 'restaurants#my_restaurants', as: 'my_restaurants'
- resources :restaurants
+ resources :restaurants do
+  member do
+    put "like", to: "restaurants#upvote"
+    put "unlike", to: "restaurants#unvote"
+  end
+end
   post '/search', to: 'users#add_search_images_to_user', as: 'add_search_images_to_user'
- resources :images
+ resources :images do
+    member do
+      put "like", to: "images#upvote"
+      put "unlike", to: "images#unvote"
+    end
+  end
 match "/images/tag/:tag", to: "images#tag", :via => [:get], :as => :tag_images
   get 'users/my_account', to: "users#my_account", as: 'my_account' 
  resources :search, only: [:index, :new, :image_results]

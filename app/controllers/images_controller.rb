@@ -1,7 +1,14 @@
 class ImagesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_image, only: [:show, :edit, :update, :destroy]
-  
+  before_action :set_image, only: [:show, :edit, :update, :destroy, :upvote, :unvote]
+  def upvote
+    @image.liked_by current_user
+    redirect_to image_path(@image);
+  end
+  def unvote
+    @image.unliked_by current_user
+    redirect_to image_path(@image);
+  end
   def tag
     @tag = params[:tag]
     if @tag.present? 

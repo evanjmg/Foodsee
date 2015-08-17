@@ -1,9 +1,6 @@
 <br/>
-<% if @image.restaurant.blank? %>
-<h4 class="show-image"><%= @image.title %></h4>
-<% else %>
+<% if !@image.restaurant.blank? %>
 <h4 class="show-image">Photo from <%= @image.restaurant.name %></h4>  
-<%=  %>
 <%= link_to image_tag(@image.image_file.thumb.url), @image.image_file.url %>
 </p>
 <div class="row">
@@ -34,7 +31,12 @@
       </div>
       <div class="small-4 columns">
         <button class="but">
-          <%= link_to "Edit", edit_image_path(@image), class: "show-page-button" %></button>
+        <% if current_user.liked? @image %>
+        <%= link_to "Liked", unlike_image_path(@image), method: :put, class: "but show-page-button" %>
+        <% else %>
+        <%= link_to "Like", like_image_path(@image), method: :put, class: "but show-page-button" %>
+        <% end %>
+         <!--  <%= link_to "Edit", edit_image_path(@image), class: "show-page-button" %></button> -->
         </div>
         <div class="small-4 columns">
           <button class="but">
@@ -43,7 +45,7 @@
         </div>
         <% else %>
         <div class="small-12 small-centered columns text-center">
-
+        <%= link_to "upvote", like_image_path(@image), method: :put, class: "but show-page-button" %>
           <%= link_to "Go to Restaurant", restaurant_path(@image.restaurant), class: "show-page-button desktop-button but" %>
           <%= link_to "Go to Restaurant", restaurant_path(@image.restaurant), class: "show-page-button responsive-button but" %>
 

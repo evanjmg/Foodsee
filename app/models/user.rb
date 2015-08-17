@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  acts_as_voter
   has_many :identities
   has_many :images, through: :imageusers
   has_many :imageusers, dependent: :destroy
