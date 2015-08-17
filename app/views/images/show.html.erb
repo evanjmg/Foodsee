@@ -32,9 +32,9 @@
       <div class="small-4 columns">
         <button class="but">
         <% if current_user.liked? @image %>
-        <%= link_to "Liked", unlike_image_path(@image), method: :put, class: "but show-page-button" %>
+        <%= link_to "Liked", unlike_image_path(@image), method: :put, class: "but show-page-button unlike" %>
         <% else %>
-        <%= link_to "Like", like_image_path(@image), method: :put, class: "but show-page-button" %>
+        <%= link_to "Like", like_image_path(@image), method: :put, class: "but show-page-button like" %>
         <% end %>
          <!--  <%= link_to "Edit", edit_image_path(@image), class: "show-page-button" %></button> -->
         </div>
