@@ -23,10 +23,12 @@ class UsersController < ApplicationController
   end
   def add_search_images_to_user
     @images = []
-    image_ids = params["/search"]["image_ids"].reject(&:empty?)
+    image_ids = params["/search"]["image_ids"].reject(&:empty?);
+
+    
     image_ids.each do |image_id|
-      @images << Image.find_by(id: image_id)
-      current_user.images << @images
+      @images << Image.find_by(id: image_id);
+      Imageuser.create(user_id: current_user.id, image_id:  image_id);
     end
       redirect_to selected_restaurants_path(:image_ids => @images)
   end

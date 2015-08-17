@@ -19,32 +19,53 @@ class RestaurantsController < ApplicationController
     @images.each do |image|
       restaurants <<  image.restaurant
     end 
-    @restaurants = restaurants.uniq
-    # a = current_user.images.
-           # - @restaurants
+   #  rest_user_exist = false
+   #  Restaurant.all.each do |restaurant|
+   #    if restaurant.images.nil? 
+   #      restaurant.destroy
+   #    else
+   #      restaurant.images.each do |image|
+   #        if image.users
+   #          rest_user_exist = true 
+   #         break; 
+   #       end
+   #     end
+   #   end
+   #   if !rest_user_exist
+   #     restaurant.destroy 
+   #   end
+   # end
+    # other way: Restaurant.where([
+    #    image_id NOT IN (?)",
+    #   Image.pluck("id"),
+    #   User.pluck("id")
+    # ]).destroy_all
 
-  end
-  def show
-    
-  end
+@restaurants = restaurants.uniq
 
-  def index
-    @restaurants = Restaurant.all
-  end
- def destroy
-   @restaurant.destroy
-   respond_to do |format|
-     format.html { redirect_to my_restaurants_path, notice: 'Workout was successfully destroyed.' }
-     format.json { head :no_content }
-   end
+
+end
+def show
+
+end
+
+def index
+  @restaurants = Restaurant.all
+end
+def destroy
+ @restaurant.destroy
+ respond_to do |format|
+   format.html { redirect_to my_restaurants_path, notice: 'Workout was successfully destroyed.' }
+   format.json { head :no_content }
  end
-  private 
-  def set_restaurants
-    @restaurant = Restaurant.find(params[:id])
-  end
-  def restaurants_params
-    params.require(:restaurant).permit(:name, :latitude,:longitude, :category, :image_ids => [])
-  end 
+end
+private 
+def set_restaurants
+  @restaurant = Restaurant.find(params[:id])
+end
+def restaurants_params
+  params.require(:restaurant).permit(:name, :latitude,:longitude, :category, :image_ids => [])
+end 
 
 end
 
