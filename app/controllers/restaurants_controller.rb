@@ -19,22 +19,30 @@ class RestaurantsController < ApplicationController
     @images.each do |image|
       restaurants <<  image.restaurant
     end 
-   #  rest_user_exist = false
-   #  Restaurant.all.each do |restaurant|
-   #    if restaurant.images.nil? 
-   #      restaurant.destroy
-   #    else
-   #      restaurant.images.each do |image|
-   #        if image.users
-   #          rest_user_exist = true 
-   #         break; 
-   #       end
-   #     end
-   #   end
-   #   if !rest_user_exist
-   #     restaurant.destroy 
-   #   end
-   # end
+  
+    Restaurant.all.each do |restaurant|
+      rest_user_exist = false
+      if restaurant.images.nil? 
+        restaurant.destroy
+      else
+        restaurant.images.each do |image|
+          puts image.users
+          if !(image.users.empty?)
+            rest_user_exist = true 
+            puts "in function" + rest_user_exist.to_s
+           break; 
+         end
+       end
+     end
+     puts "out function" + rest_user_exist.to_s
+     if !rest_user_exist
+      restaurant.images.each do |image|
+        image.destroy
+      end
+       restaurant.destroy 
+       puts "destroyed"
+     end
+   end
     # other way: Restaurant.where([
     #    image_id NOT IN (?)",
     #   Image.pluck("id"),
@@ -42,8 +50,6 @@ class RestaurantsController < ApplicationController
     # ]).destroy_all
 
 @restaurants = restaurants.uniq
-
-
 end
 def show
 

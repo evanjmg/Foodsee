@@ -1,5 +1,5 @@
 class Restaurant < ActiveRecord::Base
- has_many :images
+ has_many :images, dependent: :destroy
  validates :latitude, presence: true
  validates :longitude, presence: true
  validates :name, presence: true
