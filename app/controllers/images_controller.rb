@@ -3,11 +3,13 @@ class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy, :upvote, :unvote]
   def upvote
     @image.liked_by current_user
-    redirect_to image_path(@image);
+     object = current_user.voted_up_on? @image
+    render :json => object
   end
   def unvote
     @image.unliked_by current_user
-    redirect_to image_path(@image);
+    object = current_user.voted_up_on? @image
+   render :json => object
   end
   def tag
     @tag = params[:tag]

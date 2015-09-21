@@ -17,40 +17,60 @@
   <% end %>
 </div>
 <div class="row">
-<p>
-  <br/>
+  <p>
+    <br/>
   </p>
-  </div>
+</div>
 <p class="show-page-buttons">
 
-  <div class="row">
+  <div class="row text-center">
     <% if  @image.users.include?(current_user) %>
     <div class="small-4 columns">
       <button class="but">
         <%= link_to "Restaurant", restaurant_path(@image.restaurant), class: "show-page-button", id:"adjusted-button" %></button>
       </div>
       <div class="small-4 columns">
-        <button class="but">
-        <% if current_user.liked? @image %>
-        <%= link_to "Liked", unlike_image_path(@image), method: :put, class: "but show-page-button unlike" %>
-        <% else %>
-        <%= link_to "Like", like_image_path(@image), method: :put, class: "but show-page-button like" %>
-        <% end %>
-         <!--  <%= link_to "Edit", edit_image_path(@image), class: "show-page-button" %></button> -->
-        </div>
-        <div class="small-4 columns">
-          <button class="but">
-            <%= link_to 'Delete', @image, method: :delete, class: "show-page-button" %>
-          </button>
-        </div>
-        <% else %>
-        <div class="small-12 small-centered columns text-center">
-        <%= link_to "upvote", like_image_path(@image), method: :put, class: "but show-page-button" %>
-          <%= link_to "Go to Restaurant", restaurant_path(@image.restaurant), class: "show-page-button desktop-button but" %>
-          <%= link_to "Go to Restaurant", restaurant_path(@image.restaurant), class: "show-page-button responsive-button but" %>
 
-        </div>
+        <% if (current_user.voted_up_on? @image) %>
+        <%= link_to "#", class: "show-page-button liked" do %> 
+        <button class="but">Liked</button>
         <% end %>
-      </div>
-      <% end %>
-    </p>
+        <% end %>
+        <% if !(current_user.voted_up_on? @image) %>
+        <%= link_to "#", class: "show-page-button like" do %>
+        <button class="but">Like</button>
+        <% end %>
+        <% end %>
+      </button>
+    </div>
+    <div class="small-4 columns">
+      <button class="but">
+        <%= link_to 'Delete', @image, method: :delete, class: "show-page-button" %>
+      </button>
+    </div>
+  </div>
+    <% else %>
+    <div class="row text-center">
+      <div class="small-6 columns" style="">
+       <% if (current_user.voted_up_on? @image) %>
+       <%= link_to "#", class: "show-page-button liked" do %> 
+       <button class="but">Liked</button>
+       <% end %>
+       <% end %>
+       <% if !(current_user.voted_up_on? @image) %>
+       <%= link_to "#", class: "show-page-button like" do %>
+       <button class="but">Like</button>
+       <% end %>
+       <% end %>
+     </button>
+
+   </div>
+   <div class="small-6 columns">
+    <%= link_to "Go to Restaurant", restaurant_path(@image.restaurant), class: "show-page-button desktop-button but" %>
+    <%= link_to "Go to Restaurant", restaurant_path(@image.restaurant), class: "show-page-button responsive-button but" %>
+  </div>
+</div>
+<% end %>
+</div>
+<% end %>
+</p>

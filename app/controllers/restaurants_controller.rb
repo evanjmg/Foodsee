@@ -11,10 +11,17 @@ class RestaurantsController < ApplicationController
   end
   def my_restaurants
 
+
     restaurants = []
-    current_user.images.each do |image|
-      restaurants << image.restaurant
+
+    current_user.find_voted_items.each do |item| 
+      if item.instance_of? Restaurant
+        restaurants.push(item)
+      end
     end
+    # current_user.images.each do |image|
+    #   restaurants << image.restaurant
+    # end
     @restaurants = restaurants.uniq
   end
   def selected

@@ -15,7 +15,13 @@ class UsersController < ApplicationController
     @restaurants = restaurants.uniq
   end
   def my_photos
-     @images = current_user.images.uniq 
+    images = []
+    current_user.find_voted_items.each do |item| 
+      if item.instance_of? Image
+        images.push(item)
+      end
+    end
+     @images = images.uniq 
   end
   # GET /users/:id/edit
   def edit

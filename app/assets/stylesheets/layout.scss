@@ -18,6 +18,8 @@ a.but, button.but {
   background-color: #5980A2;
  color:white;
  padding:8px;
+ max-width: 100px;
+ margin:auto;
 }
 a.but:hover, button.but:hover {
   background-color:#EE352A;
@@ -42,6 +44,9 @@ input[type="submit"] {
 }
 a#foodsee-logo-link {
   margin:10px;
+}
+h2 {
+  font-weight: 700;
 }
 h2#tagline {
   font-size: 15px;

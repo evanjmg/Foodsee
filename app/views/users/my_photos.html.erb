@@ -1,6 +1,15 @@
 
-<%= render 'nav' %>
+
 <div class="my-photos-list">
-<h2><%= @user.name %>'s Photos</h2>
+
+
+<% if current_user == @user %>
+<%=  render 'nav' %>
+ <h2>  Your Favorite Meals</h2>
+<% else %>
+  <h2><%= @user.name %>'s Favorite Meals</h2>
+<% end %>
+</h2> 
+
 <%= render  @images %>
 </div>
