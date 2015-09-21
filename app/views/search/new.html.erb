@@ -70,8 +70,9 @@
             <%= link_to image do %><%= image_tag image.url, alt: "slide #{counter}", class: "slider-image" %><% end %>
             <% counter += 1 %>
             <div class="orbit-caption hashtags-show-image slider-caption text-center" >
+            <% if image.restaurant %>
               <%= link_to restaurant_path(image.restaurant) do %> <%= image.restaurant.name %><% end %>
-
+            <% end %>
               <div class="row hashtags-show-image text-centered">
                 <% if image.tags[0].name != "[]" %>
                 <% image.tags[0..5].each do |tag| %>
