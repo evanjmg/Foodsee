@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_restaurants, only: [:show, :destroy, :my_restaurants, :upvote, :unvote]
+  before_action :set_restaurants, only: [:show, :destroy, :upvote, :unvote]
   def upvote
     @restaurant.liked_by current_user
     redirect_to restaurant_path(@restaurant);
@@ -11,7 +11,7 @@ class RestaurantsController < ApplicationController
   end
   def my_restaurants
 
-
+ 
     restaurants = []
 
     current_user.find_voted_items.each do |item| 
@@ -23,6 +23,7 @@ class RestaurantsController < ApplicationController
     #   restaurants << image.restaurant
     # end
     @restaurants = restaurants.uniq
+
   end
   def selected
     @images = []
@@ -82,6 +83,7 @@ def destroy
 end
 private 
 def set_restaurants
+  
   @restaurant = Restaurant.find(params[:id])
 end
 def restaurants_params

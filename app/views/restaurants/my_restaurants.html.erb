@@ -1,4 +1,8 @@
 <h2>My Restaurants</h2>
-<% if @restaurants != nil %>
+<% if @restaurants.length > 0 %>
 <%= render @restaurants %>
+<% else  %>
+<p>
+You haven't liked any restaurants.  <%= link_to("Search now", new_search_path) %> and like them. 
+</p>
 <% end %>

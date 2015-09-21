@@ -10,6 +10,9 @@
   <h2><%= @user.name %>'s Favorite Meals</h2>
 <% end %>
 </h2> 
-
+<% if @images.length > 0 %>
 <%= render  @images %>
+<% else %>
+You haven't liked any meals. Like meals to add them to your favorite. <%= link_to("Search for meals now", new_search_path) %> 
+<% end %>
 </div>
