@@ -90,14 +90,14 @@
       
       </div>
 
-      <% if @restaurants != nil %>
+      <% if @restaurants %>
       <div class="search-restaurants-container large-5 small-12 medium-12">
         <div class="search-restaurants">
           <div class="row">
             <div class="large-8 columns recent-restaurants"><h3>Recent Restaurants</h3></div>
             <div class="large-4 columns"><%= link_to "See More >>", restaurants_path, class: 'see-more' %></div>
           </div>
-          <% if @restaurants %>
+          <% if @restaurants.length > 0 %>
           <%= render @restaurants.shuffle[0] %>
             <% end %>
         </div>
