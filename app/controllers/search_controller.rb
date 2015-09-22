@@ -8,8 +8,7 @@ class SearchController < ApplicationController
     @images.each do |image| 
       restaurants << image.restaurant
     end
-    random = restaurants.uniq 
-    @restaurants = [random[0]];
+    @restaurants = restaurants.uniq[0];
   end
 end
 
