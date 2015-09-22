@@ -8,7 +8,7 @@ class SearchController < ApplicationController
     @images.each do |image| 
       restaurants << image.restaurant
     end
-    @restaurants = restaurants.uniq
+    @restaurants = restaurants.uniq[0];
   end
 end
 
