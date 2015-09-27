@@ -8,6 +8,14 @@ div.fixed {
   margin-bottom: 200px;
   position:fixed;
 }
+.privacy-policy-text {
+  overflow:scroll;
+   height:100vh;
+    color:white !important;
+    h3, h2 {
+      color:white;
+    }
+}
 .nav-button:hover {
   background-color:#4B769A;
   height:100%;

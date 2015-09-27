@@ -9,6 +9,9 @@
    <%= link_to my_restaurants_path(current_user) do %>
    <%= image_tag "https://s3-eu-west-1.amazonaws.com/foodsee/uploads/app_elements/restaurant-icon.png", id: "restaurant-icon" %><% end %></div>
    <% else  %>
-  <span><%= link_to 'http://evanjmg.com' do %>&copy; 2015 Evan Gillogley<% end %></span>
+  <div style="padding-bottom:30px;">
+  <span><%= link_to 'http://evanjmg.com' do %>&copy; 2015 Evan Gillogley | <% end %>  </span> 
+  <span> <%= link_to privacy_policy_path do %> Privacy Policy<% end %></span>
+  </div>
   <% end %>
 </div>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # match '/404', to: 'errors#file_not_found', via: :all
   # match '/422', to: 'errors#unprocessable', via: :all
   # match '/500', to: 'errors#internal_server_error', via: :all
+get '/privacy-policy', to: 'static#privacy_policy', as: 'privacy_policy'
 get 'users/:id/photos', to: 'users#my_photos', as: 'my_photos'
  get '/restaurants/selected', to: 'restaurants#selected', as: 'selected_restaurants'
  get '/search/recent', to: 'search#recent', as: 'recent_searches'
