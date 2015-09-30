@@ -50,7 +50,7 @@ class RestaurantsController < ApplicationController
          end
        end
      end
-     puts "out function" + rest_user_exist.to_s
+    
      if !rest_user_exist
       restaurant.images.each do |image|
         image.destroy
