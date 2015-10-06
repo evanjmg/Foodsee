@@ -19,7 +19,7 @@
     <p>
       <div class="row" style="margin-left:0px;">
         <%= link_to "http://facebook.com/#{@restaurant.facebook}" do %>
-        <%= image_tag "https://s3-eu-west-1.amazonaws.com/foodsee/uploads/app_elements/facebook-logo.png", width: '37px' %><% end %>
+        <%= image_tag "facebook-logo.png", width: '37px' %><% end %>
         <% if current_user.liked? @restaurant %>
         <%= link_to "Liked", unlike_restaurant_path(@restaurant), method: :put, class: "but show-page-button" %>
         <% else %>
