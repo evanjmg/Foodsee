@@ -28,6 +28,7 @@ gem 'net-ssh', '2.10.0.beta2'
 gem 'acts_as_votable', '~> 0.10.0'
 # gem "resque", "~> 2.0.0.pre.1"
 # gem 'mail'
+gem "bullet", :group => "development"
 
 group :test, :development do
   gem "test-unit"
