@@ -36,48 +36,48 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
-config.after_initialize do
-  Bullet.enable = true
-  Bullet.alert = true
-  Bullet.bullet_logger = true
-  Bullet.console = true
-  # Bullet.xmpp = { :account  => 'bullets_account@jabber.org',
-  #                 :password => 'bullets_password_for_jabber',
-  #                 :receiver => 'your_account@jabber.org',
-  #                 :show_online_status => true }
-  # Each of these settings defaults to true
+# config.after_initialize do
+#   Bullet.enable = true
+#   Bullet.alert = true
+#   Bullet.bullet_logger = true
+#   Bullet.console = true
+#   # Bullet.xmpp = { :account  => 'bullets_account@jabber.org',
+#   #                 :password => 'bullets_password_for_jabber',
+#   #                 :receiver => 'your_account@jabber.org',
+#   #                 :show_online_status => true }
+#   # Each of these settings defaults to true
 
-# Detect N+1 queries
-# Bullet.n_plus_one_query_enable     = false
+# # Detect N+1 queries
+# # Bullet.n_plus_one_query_enable     = false
 
-# # Detect eager-loaded associations which are not used
-# Bullet.unused_eager_loading_enable = false
+# # # Detect eager-loaded associations which are not used
+# # Bullet.unused_eager_loading_enable = false
 
-# # Detect unnecessary COUNT queries which could be avoided
-# # with a counter_cache
-# Bullet.counter_cache_enable        = false
+# # # Detect unnecessary COUNT queries which could be avoided
+# # # with a counter_cache
+# # Bullet.counter_cache_enable        = false
 
-# Bullet.add_whitelist :type => :n_plus_one_query, :class_name => "Post", :association => :comments
-# Bullet.add_whitelist :type => :unused_eager_loading, :class_name => "Post", :association => :comments
-# Bullet.add_whitelist :type => :counter_cache, :class_name => "Country", :association => :cities
-#   class ApplicationController < ActionController::Base
-#   around_action :skip_bullet
+# # Bullet.add_whitelist :type => :n_plus_one_query, :class_name => "Post", :association => :comments
+# # Bullet.add_whitelist :type => :unused_eager_loading, :class_name => "Post", :association => :comments
+# # Bullet.add_whitelist :type => :counter_cache, :class_name => "Country", :association => :cities
+# #   class ApplicationController < ActionController::Base
+# #   around_action :skip_bullet
 
-#   def skip_bullet
-#     Bullet.enable = false
-#     yield
-#   ensure
-#     Bullet.enable = true
-#   end
+# #   def skip_bullet
+# #     Bullet.enable = false
+# #     yield
+# #   ensure
+# #     Bullet.enable = true
+# #   end
+# # end
+
+#   Bullet.rails_logger = true
+#   Bullet.airbrake = true
+#   Bullet.rollbar = true
+#   Bullet.add_footer = true
+#   Bullet.stacktrace_includes = [ 'your_gem', 'your_middleware' ]
+#   # Bullet.slack = { webhook_url: 'http://some.slack.url', foo: 'bar' }
 # end
-
-  Bullet.rails_logger = true
-  Bullet.airbrake = true
-  Bullet.rollbar = true
-  Bullet.add_footer = true
-  Bullet.stacktrace_includes = [ 'your_gem', 'your_middleware' ]
-  # Bullet.slack = { webhook_url: 'http://some.slack.url', foo: 'bar' }
-end
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
